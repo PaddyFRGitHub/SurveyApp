@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CCCCFF"
+        tools:context=".AdminPanel">
+
+    <ImageView
+            app:srcCompat="@drawable/dmulogo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.3"
+            android:scaleType="centerCrop"/>
+
+    <TextView
+            android:id="@+id/textView7"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="121dp"
+            android:layout_marginEnd="35dp"
+            android:layout_marginBottom="8dp"
+            android:text="Start Date"
+            android:textColor="@color/purple_700"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/LinearLayoutV"
+            app:layout_constraintEnd_toStartOf="@+id/textView8"
+            app:layout_constraintStart_toEndOf="@+id/textView6" />
+
+    <TextView
+            android:id="@+id/textView8"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp"
+            android:text="Ends at"
+            android:textColor="@color/purple_700"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/LinearLayoutV"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+            android:id="@+id/btn_makeNewSurvey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_700"
+            android:onClick="newSurveyButton"
+            android:text="New Survey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="84dp" />
+
+    <Button
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#627BB5"
+            android:onClick="logOutBtn"
+            android:text="LogOut"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+            android:id="@+id/LinearLayoutV"
+            android:layout_width="379dp"
+            android:layout_height="353dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="1.0">
+
+        <ListView
+                android:id="@+id/listviewItem"
+                android:layout_width="match_parent"
+                android:layout_height="270dp" />
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/textView6"
+            android:layout_width="60dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="Title"
+            android:textColor="@color/purple_700"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/LinearLayoutV"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+            android:id="@+id/welcome"
+            android:layout_width="305dp"
+            android:layout_height="38dp"
+            android:text="Welcome!"
+            android:textColor="@color/purple_700"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
