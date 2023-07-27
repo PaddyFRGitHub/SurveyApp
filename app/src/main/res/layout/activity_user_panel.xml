@@ -1,98 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#CCCCFF"
-    tools:context=".UserPanel">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#CCCCFF"
+        tools:context=".UserPanel">
 
+    <!-- ImageView with alpha for background -->
     <ImageView
             app:srcCompat="@drawable/dmulogo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:alpha="0.3"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/imageView" />
 
+    <!-- Welcome TextView -->
     <TextView
-        android:id="@+id/textView24"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="8dp"
-        android:text="Title"
-        android:textColor="@color/purple_700"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearlayout2"
-        app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome!"
+            android:textColor="@color/purple_700"
+            android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp" />
 
-    <TextView
-        android:id="@+id/textView25"
-        android:layout_width="80dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="121dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="8dp"
-        android:text="Start Date"
-        android:textColor="@color/purple_700"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearlayout2"
-        app:layout_constraintEnd_toStartOf="@+id/textView26"
-        app:layout_constraintStart_toEndOf="@+id/textView24" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="60dp"
-        android:layout_height="20dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
-        android:text="Ends at"
-        android:textColor="@color/purple_700"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearlayout2"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+    <!-- Logout Button -->
     <Button
-        android:id="@+id/btn_logout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="#627BB5"
-        android:onClick="logOutBtn"
-        android:text="Logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/btn_logout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#627BB5"
+            android:onClick="logOutBtn"
+            android:text="Logout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="20dp" />
+
+    <!-- Title TextView -->
+    <TextView
+            android:id="@+id/textView24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textColor="@color/purple_700"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/linearlayout2"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="8dp" />
+
+    <!-- Start Date TextView -->
+    <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Date"
+            android:textColor="@color/purple_700"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/textView24"
+            app:layout_constraintBottom_toTopOf="@+id/linearlayout2"
+            android:layout_marginStart="121dp"
+            android:layout_marginBottom="8dp" />
+
+    <TextView
+            android:id="@+id/textView26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ends at"
+            android:textColor="@color/purple_700"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/textView25"
+            app:layout_constraintBottom_toTopOf="@+id/linearlayout2"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="8dp" />
 
     <LinearLayout
-        android:id="@+id/linearlayout2"
-        android:layout_width="370dp"
-        android:layout_height="528dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+            android:id="@+id/linearlayout2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/textView9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView">
 
         <ListView
-            android:id="@+id/listviewItem2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+                android:id="@+id/listviewItem2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@android:color/darker_gray"
+                android:dividerHeight="1dp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:text="Welcome!"
-        android:textColor="@color/purple_700"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/btn_logout2"
-        app:layout_constraintHorizontal_bias="0.318"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

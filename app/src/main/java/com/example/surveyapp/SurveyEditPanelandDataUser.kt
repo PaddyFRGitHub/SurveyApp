@@ -13,8 +13,12 @@ import com.example.surveyapp.Model.Answer
 import com.example.surveyapp.Model.DataBaseHelper
 import com.example.surveyapp.Model.Result
 import com.example.surveyapp.Model.Results
+import java.text.ParseException
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
 class SurveyEditPanelandDataUser : AppCompatActivity() {
@@ -116,28 +120,44 @@ class SurveyEditPanelandDataUser : AppCompatActivity() {
             }
         }
 
+        val startDateView = findViewById<TextView>(R.id.text_editStartDate2)
+        val startDateStr = survey.surveyStartDate
+        val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+        val startDate = try {
+            sdf.parse(startDateStr)
+        } catch (e: ParseException) {
+            // Provide a default date in case of parsing error
+            // You can choose any default date that makes sense in your context
+            Date()
+        }
+// Parsing survey end date
+        val endDateView = findViewById<TextView>(R.id.text_editEndDate2)
+        val endDateStr = survey.surveyEndDate
+        val endDate = try {
+            sdf.parse(endDateStr)
+        } catch (e: ParseException) {
+            // Provide a default date in case of parsing error
+            // You can choose any default date that makes sense in your context
+            Date()
+        }
+// Getting current date
+        val currentDate = Date()
+
         findViewById<TextView>(R.id.text_editTitle2).text = survey.surveyTitle
-        var startdate = findViewById<TextView>(R.id.text_editStartDate2)
-        startdate.text = survey.surveyStartDate
-        var endDate = findViewById<TextView>(R.id.text_editEndDate2)
-        endDate.text = survey.surveyEndDate
-
-        val current: LocalDate = LocalDate.now()
-        val localDate2: LocalDate =
-            LocalDate.parse(endDate.text, DateTimeFormatter.ofPattern("dd-MM-yyyy"))
-        val localDate3: LocalDate =
-            LocalDate.parse(startdate.text, DateTimeFormatter.ofPattern("dd-MM-yyyy"))
-
+        startDateView.text = startDateStr
+        endDateView.text = endDateStr
 
         findViewById<TextView>(R.id.text_warning).text =
             "Data will be updated once the survey has been answered."
 
-        if (localDate3 > current) {
+        if (startDate > currentDate) {
             findViewById<Button>(R.id.btn_edit2).isVisible = false
             findViewById<TextView>(R.id.text_warning).isVisible = true
             findViewById<TextView>(R.id.text_warning).text = "The Survey has yet to start"
         }
-        if (alreadyAnswered.contains(transferUserId) || localDate2 <= current || localDate3 < current) {
+
+// Checking if the survey has already been answered or the end date has passed
+        if (alreadyAnswered.contains(transferUserId) || endDate <= currentDate || startDate < currentDate) {
             findViewById<TextView>(R.id.text_warning).isVisible = false
             findViewById<Button>(R.id.btn_edit2).isVisible = false
             findViewById<LinearLayout>(R.id.linearLayout).isVisible = true
@@ -146,7 +166,6 @@ class SurveyEditPanelandDataUser : AppCompatActivity() {
             findViewById<TextView>(R.id.textView19).isVisible = true
             findViewById<TextView>(R.id.textView18).isVisible = true
             findViewById<TextView>(R.id.textView23).isVisible = true
-
         }
         simpleList = findViewById<ListView>(R.id.resultListView)
 
