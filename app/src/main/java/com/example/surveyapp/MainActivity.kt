@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     fun login(view: View) {
 
         val intent = Intent(this, AdminPanel::class.java)
-        val intent2 = Intent(this, UserPanel::class.java)
+        val intent2 = Intent(this, UserInterfaceActivity::class.java)
 
         val userName = findViewById<EditText>(R.id.text_username).text.toString()
         val passWord = findViewById<EditText>(R.id.text_Password).text.toString()

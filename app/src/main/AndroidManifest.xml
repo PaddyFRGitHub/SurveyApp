@@ -21,42 +21,42 @@
                     android:value="" />
         </activity>
         <activity
-                android:name=".UserAnswerPanel"
+                android:name=".UserAnswerActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
                     android:value="" />
         </activity>
         <activity
-                android:name=".SurveyEditPanelandDataUser"
+                android:name=".ChangeUserSurveyActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
                     android:value="" />
         </activity>
         <activity
-                android:name=".EditSurveyQuestions"
+                android:name=".EditSurveyQuestionsActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
                     android:value="" />
         </activity>
         <activity
-                android:name=".EditSurveyTitlePanel"
+                android:name=".EditSurveyMainActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
                     android:value="" />
         </activity>
         <activity
-                android:name=".QuestionPanel"
+                android:name=".QuestionPanelActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
                     android:value="" />
         </activity>
         <activity
-                android:name=".SurveyEditPanelandData"
+                android:name=".ChangeSurveyActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
@@ -77,7 +77,7 @@
                     android:value="" />
         </activity>
         <activity
-                android:name=".UserPanel"
+                android:name=".UserInterfaceActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"

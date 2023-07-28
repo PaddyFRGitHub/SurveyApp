@@ -118,7 +118,7 @@ class NewSurveyActivity : AppCompatActivity() {
             ).show()
             return
         } else {
-            val intent = Intent(this, QuestionPanel::class.java)
+            val intent = Intent(this, QuestionPanelActivity::class.java)
 
             intent.putExtra("title", title)
             intent.putExtra("startDate", startDate)

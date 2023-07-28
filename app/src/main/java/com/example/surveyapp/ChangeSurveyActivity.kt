@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.surveyapp.Model.*
 import kotlin.math.roundToInt
 
-class SurveyEditPanelandData : AppCompatActivity() {
+class ChangeSurveyActivity : AppCompatActivity() {
 
     val dbHelper: DataBaseHelper = DataBaseHelper(this)
     val questions = ArrayList<Question>()
@@ -114,7 +114,7 @@ class SurveyEditPanelandData : AppCompatActivity() {
     }
 
     fun edit(view: View) {
-        val intent = Intent(this, EditSurveyTitlePanel::class.java)
+        val intent = Intent(this, EditSurveyMainActivity::class.java)
         intent.putExtra("surveyId", surveyid)
         intent.putExtra("userId", userId)
         startActivity(intent)

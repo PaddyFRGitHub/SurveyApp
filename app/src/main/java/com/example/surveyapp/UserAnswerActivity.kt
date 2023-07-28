@@ -10,7 +10,7 @@ import com.example.surveyapp.Model.Answer
 import com.example.surveyapp.Model.DataBaseHelper
 import com.example.surveyapp.Model.Question
 
-class UserAnswerPanel : AppCompatActivity() {
+class UserAnswerActivity : AppCompatActivity() {
     val dbHelper: DataBaseHelper = DataBaseHelper(this)
     val newArray = ArrayList<Question>()
     val answersTextArray = ArrayList<String>()
@@ -90,7 +90,7 @@ class UserAnswerPanel : AppCompatActivity() {
     }
 
     fun complete(view: View) {
-        val intent = Intent(this, UserPanel::class.java)
+        val intent = Intent(this, UserInterfaceActivity::class.java)
         val button1 = findViewById<RadioButton>(R.id.radioButton)
         val button2 = findViewById<RadioButton>(R.id.radioButton2)
         val button3 = findViewById<RadioButton>(R.id.radioButton3)
@@ -142,7 +142,7 @@ class UserAnswerPanel : AppCompatActivity() {
     }
 
     fun cancelAnswers(view: View) {
-        val intent = Intent(this, UserPanel::class.java)
+        val intent = Intent(this, UserInterfaceActivity::class.java)
         intent.putExtra("userId", userId)
         startActivity(intent)
     }

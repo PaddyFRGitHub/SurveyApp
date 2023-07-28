@@ -15,13 +15,11 @@ import com.example.surveyapp.Model.Result
 import com.example.surveyapp.Model.Results
 import java.text.ParseException
 import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.roundToInt
 
-class SurveyEditPanelandDataUser : AppCompatActivity() {
+class ChangeUserSurveyActivity : AppCompatActivity() {
     val dbHelper: DataBaseHelper = DataBaseHelper(this)
 
     var surveyid = 0
@@ -177,7 +175,7 @@ class SurveyEditPanelandDataUser : AppCompatActivity() {
     }
 
     fun answer(view: View) {
-        val intent = Intent(this, UserAnswerPanel::class.java)
+        val intent = Intent(this, UserAnswerActivity::class.java)
         intent.putExtra("surveyid", surveyid)
         intent.putExtra("userId", transferUserId)
         startActivity(intent)

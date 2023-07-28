@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.surveyapp.Model.DataBaseHelper
 
-class UserPanel : AppCompatActivity() {
+class UserInterfaceActivity : AppCompatActivity() {
     lateinit var simpleList: ListView
 
 
@@ -36,7 +36,7 @@ class UserPanel : AppCompatActivity() {
             val surveyTitle = surveyList[positon]
 
 
-            val intent = Intent(this, SurveyEditPanelandDataUser::class.java)
+            val intent = Intent(this, ChangeUserSurveyActivity::class.java)
             intent.putExtra("surveyId", surveyTitle.surveyId)
             intent.putExtra("userId", userId)
 

@@ -35,7 +35,7 @@ class AdminPanel : AppCompatActivity() {
         simpleList.setOnItemClickListener { parent, view, positon, id ->
             val surveyTitle = surveyList[positon]
 
-            val intent = Intent(this, SurveyEditPanelandData::class.java)
+            val intent = Intent(this, ChangeSurveyActivity::class.java)
             intent.putExtra("surveyid", surveyTitle.surveyId)
             intent.putExtra("userId", userIdd)
             startActivity(intent)

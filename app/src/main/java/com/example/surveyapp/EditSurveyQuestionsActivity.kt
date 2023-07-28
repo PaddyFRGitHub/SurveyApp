@@ -10,7 +10,7 @@ import com.example.surveyapp.Model.DataBaseHelper
 import com.example.surveyapp.Model.Question
 import com.example.surveyapp.Model.Survey
 
-class EditSurveyQuestions : AppCompatActivity() {
+class EditSurveyQuestionsActivity : AppCompatActivity() {
     val dbHelper = DataBaseHelper(this)
     var transferId2 = 0
     val newArray = ArrayList<Question>()

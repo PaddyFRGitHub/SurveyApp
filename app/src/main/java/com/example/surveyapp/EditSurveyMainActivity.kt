@@ -13,7 +13,7 @@ import com.example.surveyapp.Model.DataBaseHelper
 import java.text.SimpleDateFormat
 import java.util.*
 
-class EditSurveyTitlePanel : AppCompatActivity() {
+class EditSurveyMainActivity : AppCompatActivity() {
     val dbHelper: DataBaseHelper = DataBaseHelper(this)
 
     var transferId = 0
@@ -23,7 +23,7 @@ class EditSurveyTitlePanel : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_survey_title_panel)
+        setContentView(R.layout.activity_edit_survey_main)
         supportActionBar?.title = ""
 
         val id = intent.getIntExtra("surveyId", 0)
@@ -96,7 +96,7 @@ class EditSurveyTitlePanel : AppCompatActivity() {
     }
 
     fun next2(view: View) {
-        val intent = Intent(this, EditSurveyQuestions::class.java)
+        val intent = Intent(this, EditSurveyQuestionsActivity::class.java)
 
         val title = findViewById<EditText>(R.id.text_title2).text.toString()
         val startDate = findViewById<TextView>(R.id.text_startDate2).text.toString()

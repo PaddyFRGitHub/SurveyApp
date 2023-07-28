@@ -10,7 +10,7 @@ import com.example.surveyapp.Model.DataBaseHelper
 import com.example.surveyapp.Model.Question
 import com.example.surveyapp.Model.Survey
 
-class QuestionPanel : AppCompatActivity() {
+class QuestionPanelActivity : AppCompatActivity() {
 
     val dbHelper = DataBaseHelper(this)
     val questionList = ArrayList<Question>()
