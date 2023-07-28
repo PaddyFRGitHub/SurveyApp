@@ -1,5 +1,6 @@
 package com.example.surveyapp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -13,6 +14,8 @@ class RegisterActivity : AppCompatActivity() {
 
     private val dbHelper: DataBaseHelper = DataBaseHelper(this)
 
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -20,15 +23,15 @@ class RegisterActivity : AppCompatActivity() {
 
         val toggle = findViewById<Switch>(R.id.btn_SwitchLogin)
         toggle.text = "User"
-        findViewById<EditText>(R.id.accesCode).visibility = View.INVISIBLE
+        findViewById<EditText>(R.id.adminCode).visibility = View.INVISIBLE
 
         toggle.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 toggle.text = "Admin"
-                findViewById<EditText>(R.id.accesCode).visibility = View.VISIBLE
+                findViewById<EditText>(R.id.adminCode).visibility = View.VISIBLE
             } else {
                 toggle.text = "User"
-                findViewById<EditText>(R.id.accesCode).visibility = View.INVISIBLE
+                findViewById<EditText>(R.id.adminCode).visibility = View.INVISIBLE
             }
         }
     }
@@ -37,7 +40,7 @@ class RegisterActivity : AppCompatActivity() {
         val switch = findViewById<Switch>(R.id.btn_SwitchLogin)
         val username = findViewById<EditText>(R.id.text_UserNameRegister).text.toString()
         val password = findViewById<EditText>(R.id.text_Password1).text.toString()
-        val accescode = findViewById<EditText>(R.id.accesCode).text.toString()
+        val code = findViewById<EditText>(R.id.adminCode).text.toString()
 
         if (username.isBlank() || password.isBlank()) {
             Toast.makeText(this, "Please fill in all the fields", Toast.LENGTH_SHORT).show()
@@ -45,11 +48,11 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         val isAdmin = switch.text == "Admin"
-        if (isAdmin && accescode != "99") {
+
+        if (isAdmin && code != "99") {
             Toast.makeText(this, "Incorrect admin code", Toast.LENGTH_SHORT).show()
             return
         }
-
         if (dbHelper.getUser(username) != null) {
             Toast.makeText(this, "User already exists", Toast.LENGTH_SHORT).show()
             return
@@ -62,10 +65,10 @@ class RegisterActivity : AppCompatActivity() {
             findViewById<EditText>(R.id.text_UserNameRegister).text.clear()
             findViewById<EditText>(R.id.text_Password1).text.clear()
             if (isAdmin) {
-                findViewById<EditText>(R.id.accesCode).text.clear()
+                findViewById<EditText>(R.id.adminCode).text.clear()
             }
         } else {
-            Toast.makeText(this, "Error: The user not added", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Error: User not added", Toast.LENGTH_SHORT).show()
         }
     }
 

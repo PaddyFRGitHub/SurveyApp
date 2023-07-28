@@ -23,7 +23,7 @@ class UserAnswerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_user_answer)
         supportActionBar?.title = ""
 
-        var getsurveyid = intent.getIntExtra("surveyid", 0)
+        var getsurveyid = intent.getIntExtra("surveyId", 0)
         var getuserid = intent.getIntExtra("userId", 0)
 
         surveyId = getsurveyid
@@ -37,7 +37,7 @@ class UserAnswerActivity : AppCompatActivity() {
 
         findViewById<TextView>(R.id.text_Question).text = newArray[0].questionText
 
-        findViewById<Button>(R.id.btn_completeAnswer).isVisible = false
+        findViewById<Button>(R.id.btn_finishAnswer).isVisible = false
         findViewById<Button>(R.id.btn_Previous).isVisible = false
 
         checkSelected()
@@ -67,14 +67,14 @@ class UserAnswerActivity : AppCompatActivity() {
         }
 
         if (index + 1 == newArray.size) {
-            findViewById<Button>(R.id.btn_completeAnswer).isVisible = true
+            findViewById<Button>(R.id.btn_finishAnswer).isVisible = true
             findViewById<Button>(R.id.btn_NextQuestion).isVisible = false
         }
     }
 
     fun previousQuestion(view: View) {
         if (index + 1 <= newArray.size) {
-            findViewById<Button>(R.id.btn_completeAnswer).isVisible = false
+            findViewById<Button>(R.id.btn_finishAnswer).isVisible = false
             findViewById<Button>(R.id.btn_NextQuestion).isVisible = true
         }
 

@@ -36,7 +36,7 @@ class UserInterfaceActivity : AppCompatActivity() {
             val surveyTitle = surveyList[positon]
 
 
-            val intent = Intent(this, ChangeUserSurveyActivity::class.java)
+            val intent = Intent(this, UserAnswerActivity::class.java)
             intent.putExtra("surveyId", surveyTitle.surveyId)
             intent.putExtra("userId", userId)
 

@@ -83,8 +83,8 @@
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/textView25"
             app:layout_constraintBottom_toTopOf="@+id/linearlayout2"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="4dp"
+            android:layout_marginStart="36dp" />
 
     <LinearLayout
             android:id="@+id/linearlayout2"

@@ -27,10 +27,12 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewRegister"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.456" />
 
     <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -58,7 +60,7 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accesCode" />
+        app:layout_constraintTop_toBottomOf="@+id/adminCode" />
 
     <EditText
         android:id="@+id/text_Password1"
@@ -77,20 +79,21 @@
         app:layout_constraintTop_toBottomOf="@+id/text_UserNameRegister" />
 
     <EditText
-        android:id="@+id/accesCode"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:textColor="@color/purple_700"
-        android:textColorHint="@color/purple_700"
-        android:ems="10"
-        android:hint="Admin Code"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_SwitchLogin" />
+            android:id="@+id/adminCode"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:textColor="@color/purple_700"
+            android:textColorHint="@color/purple_700"
+            android:ems="10"
+            android:hint="Admin Code"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_SwitchLogin"
+            app:layout_constraintHorizontal_bias="0.456" />
 
     <Button
             android:id="@+id/btn_RegisterAccount"
