@@ -23,7 +23,7 @@ class ChangeSurveyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_survey_edit_paneland_data)
+        setContentView(R.layout.activity_change_survey)
         supportActionBar?.title = ""
 
         var getsurveid = intent.getIntExtra("surveyid", 0)

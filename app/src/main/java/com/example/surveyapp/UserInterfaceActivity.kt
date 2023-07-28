@@ -16,7 +16,7 @@ class UserInterfaceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_panel)
+        setContentView(R.layout.activity_user_interface)
         supportActionBar?.title = ""
 
         val userId = intent.getIntExtra("userId", 0)

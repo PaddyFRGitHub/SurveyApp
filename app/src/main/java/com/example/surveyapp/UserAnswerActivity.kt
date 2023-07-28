@@ -20,7 +20,7 @@ class UserAnswerActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_answer_panel)
+        setContentView(R.layout.activity_user_answer)
         supportActionBar?.title = ""
 
         var getsurveyid = intent.getIntExtra("surveyid", 0)
