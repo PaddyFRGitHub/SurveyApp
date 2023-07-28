@@ -331,4 +331,51 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
         return answersList
     }
 
+    fun getAllAnswersByQuestionid(uId: Int): ArrayList<Answer> {
+        val answersList = ArrayList<Answer>()
+        val db: SQLiteDatabase = this.readableDatabase
+        val sqlStatement = "SELECT * FROM $answers WHERE $answerQuestionId = $uId"
+
+        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+
+        if (cursor.moveToFirst()) {
+            do {
+                val answerId = cursor.getInt(0)
+                val questionId = cursor.getInt(1)
+                val userId = cursor.getInt(2)
+                val answerText = cursor.getString(3)
+                val x = Answer(answerId, questionId, userId, answerText)
+                answersList.add(x)
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        db.close()
+
+        return answersList
+    }
+
+
+    fun deleteAnswer(answer: Answer): Boolean {
+
+        val db: SQLiteDatabase = this.writableDatabase
+        val result = db.delete(answers, "$answerId = ${answer.answerId}", null) == 1
+
+        db.close()
+        return result
+    }
+
+    fun addAnswer(answer: Answer): Boolean {
+
+        val db: SQLiteDatabase = this.writableDatabase
+        val cv: ContentValues = ContentValues()
+
+        cv.put(answerText, answer.answerText)
+        cv.put(answerUserId, answer.userId)
+        cv.put(answerQuestionId, answer.questionId)
+
+        val success = db.insert(answers, null, cv)
+        db.close()
+        return success != -1L
+
+    }
 }

@@ -96,7 +96,6 @@
             android:id="@+id/welcome"
             android:layout_width="305dp"
             android:layout_height="38dp"
-            android:text="Welcome!"
             android:textColor="@color/purple_700"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
