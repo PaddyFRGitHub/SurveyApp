@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class NewSurvey : AppCompatActivity() {
+class NewSurveyActivity : AppCompatActivity() {
 
     val dbHelper = DataBaseHelper(this)
 

@@ -43,7 +43,7 @@ class AdminPanel : AppCompatActivity() {
     }
 
     fun newSurveyButton(view: View) {
-        val intent = Intent(this, NewSurvey::class.java)
+        val intent = Intent(this, NewSurveyActivity::class.java)
         intent.putExtra("USERID", userIdd)
         startActivity(intent)
     }

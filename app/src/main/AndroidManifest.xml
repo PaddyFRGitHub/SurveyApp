@@ -63,7 +63,7 @@
                     android:value="" />
         </activity>
         <activity
-                android:name=".NewSurvey"
+                android:name=".NewSurveyActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
@@ -84,7 +84,7 @@
                     android:value="" />
         </activity>
         <activity
-                android:name=".RegisterPanel"
+                android:name=".RegisterActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"

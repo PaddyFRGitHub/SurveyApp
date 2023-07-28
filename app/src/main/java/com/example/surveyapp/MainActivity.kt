@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun register(view: View) {
-        val intent = Intent(this, RegisterPanel::class.java)
+        val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 
