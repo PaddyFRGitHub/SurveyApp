@@ -21,8 +21,8 @@ class UserPanel : AppCompatActivity() {
 
         val userId = intent.getIntExtra("userId", 0)
 
-        val findUser = dbHelper.getUserByID(userId)
-        findViewById<TextView>(R.id.textView9).text = "Welcome, " + findUser.userName + "!"
+        val displayUser = dbHelper.getUserByID(userId)
+        findViewById<TextView>(R.id.textView9).text = displayUser.userName
 
         val surveyList = dbHelper.getAllSurveys()
         simpleList = findViewById<ListView>(R.id.listviewItem2)

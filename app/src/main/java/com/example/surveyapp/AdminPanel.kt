@@ -21,8 +21,8 @@ class AdminPanel : AppCompatActivity() {
         supportActionBar?.title = ""
 
         userIdd = intent.getIntExtra("userId", 0)
-        val findUser = dbHelper.getUserByID(userIdd)
-        findViewById<TextView>(R.id.welcome).text = "Welcome, " + findUser.userName + "!"
+        val displayUser = dbHelper.getUserByID(userIdd)
+        findViewById<TextView>(R.id.welcome).text = displayUser.userName
 
         val surveyList = dbHelper.getAllSurveys()
         simpleList = findViewById<ListView>(R.id.listviewItem)
@@ -43,7 +43,7 @@ class AdminPanel : AppCompatActivity() {
     }
 
     fun newSurveyButton(view: View) {
-        val intent = Intent(this, NewSurveyPanel::class.java)
+        val intent = Intent(this, NewSurvey::class.java)
         intent.putExtra("USERID", userIdd)
         startActivity(intent)
     }

@@ -32,7 +32,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-thin"
+            android:textStyle="bold" />
 
     <!-- Logout Button -->
     <Button

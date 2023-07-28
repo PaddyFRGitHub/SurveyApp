@@ -63,7 +63,7 @@
                     android:value="" />
         </activity>
         <activity
-                android:name=".NewSurveyPanel"
+                android:name=".NewSurvey"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"
