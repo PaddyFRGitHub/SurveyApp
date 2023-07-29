@@ -8,14 +8,14 @@
         tools:context=".QuestionPanelActivity">
 
     <Button
-            android:id="@+id/btn_publish"
+            android:id="@+id/btn_finish2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/purple_700"
             android:onClick="publish"
-            android:text="Publish"
+            android:text="Finish"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
@@ -34,7 +34,7 @@
     <ScrollView
             android:layout_width="397dp"
             android:layout_height="405dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_publish"
+            app:layout_constraintBottom_toTopOf="@+id/btn_finish2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

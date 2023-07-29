@@ -124,7 +124,7 @@ class ChangeSurveyActivity : AppCompatActivity() {
     fun delete(view: View) {
 
         if (dbHelper.deleteSurvey(surveyid)) {
-            val intent = Intent(this, AdminInterface::class.java)
+            val intent = Intent(this, AdminInterfaceActivity::class.java)
 
             try {
                 for (i in 0 until 10) {

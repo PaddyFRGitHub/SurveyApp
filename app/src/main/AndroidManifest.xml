@@ -84,7 +84,7 @@
                     android:value="" />
         </activity>
         <activity
-                android:name=".AdminInterface"
+                android:name=".AdminInterfaceActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"

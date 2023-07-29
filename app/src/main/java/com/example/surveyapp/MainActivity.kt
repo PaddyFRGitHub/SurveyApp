@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     fun login(view: View) {
 
-        val intent = Intent(this, AdminInterface::class.java)
+        val intent = Intent(this, AdminInterfaceActivity::class.java)
         val intent2 = Intent(this, UserInterfaceActivity::class.java)
 
         val userName = findViewById<EditText>(R.id.text_pnumber).text.toString()
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             return
         } else {
-            Toast.makeText(this, "User does not exist! ", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Invalid username or password ", Toast.LENGTH_LONG).show()
         }
     }
 
