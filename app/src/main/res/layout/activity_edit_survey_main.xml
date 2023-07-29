@@ -23,7 +23,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_next2"
-            app:layout_constraintHorizontal_bias="0.496" />
+            app:layout_constraintHorizontal_bias="0.503"
+            android:layout_marginTop="4dp" />
 
     <Button
             android:id="@+id/btn_next2"
@@ -34,50 +35,55 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_startDate2"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="84dp"
+            app:layout_constraintHorizontal_bias="0.507" />
 
     <TextView
-        android:id="@+id/text_endDate2"
-        android:layout_width="125dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="132dp"
-        android:layout_marginEnd="60dp"
-        android:textColor="@color/purple_700"
-        android:textColorHint="@color/purple_700"
-        android:ems="10"
-        android:hint="End Date"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title2" />
+            android:id="@+id/text_endDate2"
+            android:layout_width="141dp"
+            android:layout_height="67dp"
+            android:layout_marginTop="132dp"
+            android:layout_marginEnd="60dp"
+            android:textColor="@color/purple_700"
+            android:textColorHint="@color/purple_700"
+            android:ems="10"
+            android:hint="End Date"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_title2"
+            android:textAlignment="center"
+            android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/text_startDate2"
-        android:layout_width="126dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="132dp"
-        android:textColor="@color/purple_700"
-        android:textColorHint="@color/purple_700"
-        android:ems="10"
-        android:hint="Start Date"
-        android:inputType="date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title2" />
+            android:id="@+id/text_startDate2"
+            android:layout_width="129dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="132dp"
+            android:textColor="@color/purple_700"
+            android:textColorHint="@color/purple_700"
+            android:ems="10"
+            android:hint="Start Date"
+            android:inputType="date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_title2"
+            android:textAlignment="center"
+            android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/text_title2"
-        android:layout_width="311dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="172dp"
-        android:layout_marginEnd="100dp"
-        android:textColor="@color/purple_700"
-        android:textColorHint="@color/purple_700"
-        android:ems="10"
-        android:hint="Title"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/text_title2"
+            android:layout_width="311dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="101dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="100dp"
+            android:textColor="@color/purple_700"
+            android:textColorHint="@color/purple_700"
+            android:ems="10"
+            android:hint="Title"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

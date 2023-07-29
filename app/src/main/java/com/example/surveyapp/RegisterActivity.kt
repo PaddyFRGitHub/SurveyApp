@@ -25,7 +25,7 @@ class RegisterActivity : AppCompatActivity() {
         supportActionBar?.title = ""
 
         val toggle = findViewById<CheckBox>(R.id.btn_ChangeUser)
-        toggle.text = "User"
+        toggle.text = "Student"
         findViewById<EditText>(R.id.adminCode).visibility = View.INVISIBLE
 
         toggle.setOnCheckedChangeListener { _, isChecked ->
@@ -33,7 +33,7 @@ class RegisterActivity : AppCompatActivity() {
                 toggle.text = "Admin"
                 findViewById<EditText>(R.id.adminCode).visibility = View.VISIBLE
             } else {
-                toggle.text = "User"
+                toggle.text = "Student"
                 findViewById<EditText>(R.id.adminCode).visibility = View.INVISIBLE
             }
         }

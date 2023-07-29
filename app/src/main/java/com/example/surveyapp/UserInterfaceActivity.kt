@@ -28,9 +28,9 @@ class UserInterfaceActivity : AppCompatActivity() {
         val surveyList = dbHelper.getAllSurveys()
         simpleList = findViewById<ListView>(R.id.listviewItem2)
 
-        val appAdaptor = App(applicationContext, surveyList)
+        val surveyListsAdaptor = SurveyLists(applicationContext, surveyList)
 
-        simpleList!!.adapter = appAdaptor
+        simpleList!!.adapter = surveyListsAdaptor
 
         simpleList.isClickable = true
         simpleList.setOnItemClickListener { parent, view, positon, id ->

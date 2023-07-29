@@ -19,7 +19,7 @@ class EditSurveyMainActivity : AppCompatActivity() {
     var transferId = 0
     lateinit var startDate2: TextView
     lateinit var endDate2: TextView
-    var userIdddd = 0
+    var userNo3 = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +27,7 @@ class EditSurveyMainActivity : AppCompatActivity() {
         supportActionBar?.title = ""
 
         val id = intent.getIntExtra("surveyId", 0)
-        userIdddd = intent.getIntExtra("userId", 0)
+        userNo3 = intent.getIntExtra("userId", 0)
         val chosenIdSurvey = dbHelper.getSurveyById(id)
 
         startDate2 = findViewById(R.id.text_startDate2)
@@ -112,7 +112,7 @@ class EditSurveyMainActivity : AppCompatActivity() {
             return
         }
         intent.putExtra("surveyId", transferId)
-        intent.putExtra("userId", userIdddd)
+        intent.putExtra("userId", userNo3)
         intent.putExtra("title", title)
         intent.putExtra("startDate", startDate)
         intent.putExtra("endDate", endDate)

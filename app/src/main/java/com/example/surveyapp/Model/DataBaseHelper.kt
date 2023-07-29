@@ -5,7 +5,6 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.util.Log
 import java.sql.SQLException
 
 private val DataBaseName = "AppDatabase.db"
@@ -253,8 +252,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
 
 
-    fun getAllQuestionsBySurveyId(id: Int): ArrayList<Question> {
-        val questionList = ArrayList<Question>()
+    fun getAllQuestionsBySurveyId(id: Int): ArrayList<Questions> {
+        val questionsList = ArrayList<Questions>()
         val db: SQLiteDatabase = this.readableDatabase
         val sqlStatement = "SELECT * FROM $questions WHERE $questionSurveyId = $id"
 
@@ -265,14 +264,14 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
                 val questionId = cursor.getInt(0)
                 val questionText = cursor.getString(1)
                 val surveyId = cursor.getInt(2)
-                val x = Question(questionId, questionText, surveyId)
-                questionList.add(x)
+                val x = Questions(questionId, questionText, surveyId)
+                questionsList.add(x)
             } while (cursor.moveToNext())
         }
         cursor.close()
         db.close()
 
-        return questionList
+        return questionsList
     }
 
 
@@ -298,15 +297,15 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
     }
 
 
-    fun addQuestion(question: Question): Boolean {
+    fun addQuestion(questions: Questions): Boolean {
 
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
 
-        cv.put(questionText, question.questionText)
-        cv.put(questionSurveyId, question.surveyId)
+        cv.put(questionText, questions.questionText)
+        cv.put(questionSurveyId, questions.surveyId)
 
-        val success = db.insert(questions, null, cv)
+        val success = db.insert(this.questions, null, cv)
         db.close()
         return success != -1L
 
@@ -321,23 +320,23 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
         return result
     }
 
-    fun updateQuestion(question: Question): Boolean {
+    fun updateQuestion(questions: Questions): Boolean {
 
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
 
-        cv.put(questionText, question.questionText)
-        cv.put(questionSurveyId, question.surveyId)
+        cv.put(questionText, questions.questionText)
+        cv.put(questionSurveyId, questions.surveyId)
 
-        val result = db.update(questions, cv, "$questionId = ${question.questionId}", null) == 1
+        val result = db.update(this.questions, cv, "$questionId = ${questions.questionId}", null) == 1
         db.close()
         return result
     }
 
 
 
-    fun getAllAnswers(): ArrayList<Answer> {
-        val answersList = ArrayList<Answer>()
+    fun getAllAnswers(): ArrayList<Answers> {
+        val answersList = ArrayList<Answers>()
         val db: SQLiteDatabase = this.readableDatabase
         val sqlStatement = "SELECT * FROM $answers"
 
@@ -349,7 +348,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
                 val questionId = cursor.getInt(1)
                 val userId = cursor.getInt(2)
                 val answerText = cursor.getString(3)
-                val x = Answer(answerId, questionId, userId, answerText)
+                val x = Answers(answerId, questionId, userId, answerText)
                 answersList.add(x)
             } while (cursor.moveToNext())
         }
@@ -359,8 +358,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
         return answersList
     }
 
-    fun getAllAnswersByQuestionid(uId: Int): ArrayList<Answer> {
-        val answersList = ArrayList<Answer>()
+    fun getAllAnswersByQuestionid(uId: Int): ArrayList<Answers> {
+        val answersList = ArrayList<Answers>()
         val db: SQLiteDatabase = this.readableDatabase
         val sqlStatement = "SELECT * FROM $answers WHERE $answerQuestionId = $uId"
 
@@ -372,7 +371,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
                 val questionId = cursor.getInt(1)
                 val userId = cursor.getInt(2)
                 val answerText = cursor.getString(3)
-                val x = Answer(answerId, questionId, userId, answerText)
+                val x = Answers(answerId, questionId, userId, answerText)
                 answersList.add(x)
             } while (cursor.moveToNext())
         }
@@ -383,25 +382,25 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
     }
 
 
-    fun deleteAnswer(answer: Answer): Boolean {
+    fun deleteAnswer(answers: Answers): Boolean {
 
         val db: SQLiteDatabase = this.writableDatabase
-        val result = db.delete(answers, "$answerId = ${answer.answerId}", null) == 1
+        val result = db.delete(this.answers, "$answerId = ${answers.answerId}", null) == 1
 
         db.close()
         return result
     }
 
-    fun addAnswer(answer: Answer): Boolean {
+    fun addAnswer(answers: Answers): Boolean {
 
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
 
-        cv.put(answerText, answer.answerText)
-        cv.put(answerUserId, answer.userId)
-        cv.put(answerQuestionId, answer.questionId)
+        cv.put(answerText, answers.answerText)
+        cv.put(answerUserId, answers.userId)
+        cv.put(answerQuestionId, answers.questionId)
 
-        val success = db.insert(answers, null, cv)
+        val success = db.insert(this.answers, null, cv)
         db.close()
         return success != -1L
 

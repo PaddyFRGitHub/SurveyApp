@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.surveyapp.Model.*
 import kotlin.math.roundToInt
 
-class ChangeSurveyActivity : AppCompatActivity() {
+class SurveyResultsActivity : AppCompatActivity() {
 
     val dbHelper: DataBaseHelper = DataBaseHelper(this)
-    val questions = ArrayList<Question>()
-    var answerList = ArrayList<Answer>()
+    val questions = ArrayList<Questions>()
+    var answersList = ArrayList<Answers>()
     var questionIdList = ArrayList<Int>()
     var resultList = ArrayList<com.example.surveyapp.Model.Choices>()
     var surveyid = 0
@@ -23,7 +23,7 @@ class ChangeSurveyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_change_survey)
+        setContentView(R.layout.activity_survey_results)
         supportActionBar?.title = ""
 
         var getsurveid = intent.getIntExtra("surveyid", 0)
@@ -40,10 +40,10 @@ class ChangeSurveyActivity : AppCompatActivity() {
         }
 
         for (id in questionIdList) {
-            answerList.addAll(dbHelper.getAllAnswersByQuestionid(id))
+            answersList.addAll(dbHelper.getAllAnswersByQuestionid(id))
         }
 
-        var totalAnswers = answerList.size
+        var totalAnswers = answersList.size
 
         var j = 1
 
@@ -54,9 +54,9 @@ class ChangeSurveyActivity : AppCompatActivity() {
                 var neither = 0
                 var disagre = 0
                 var strongDisagree = 0
-                for (x in 0 until answerList.size) {
-                    if (questionId == answerList[x].questionId) {
-                        when (answerList[x].answerText) {
+                for (x in 0 until answersList.size) {
+                    if (questionId == answersList[x].questionId) {
+                        when (answersList[x].answerText) {
                             "1.Strongly Agree" -> {
                                 strongAgree++
                             }
@@ -131,8 +131,8 @@ class ChangeSurveyActivity : AppCompatActivity() {
                     dbHelper.deleteQuestion(questions[i].questionId)
                 }
 
-                for (i in 0 until answerList.size) {
-                    dbHelper.deleteAnswer(answerList[i])
+                for (i in 0 until answersList.size) {
+                    dbHelper.deleteAnswer(answersList[i])
                 }
             } catch (e: java.lang.IndexOutOfBoundsException) {
             }

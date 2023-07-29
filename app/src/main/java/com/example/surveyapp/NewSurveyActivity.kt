@@ -17,24 +17,29 @@ import java.util.*
 class NewSurveyActivity : AppCompatActivity() {
 
     val dbHelper = DataBaseHelper(this)
-
     lateinit var startDate: TextView
     lateinit var endDate: TextView
-    var userIddddd = 0
+    var userNo2 = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_survey_panel)
         supportActionBar?.title = ""
         var userId = intent.getIntExtra("USERID", 0)
-        userIddddd = userId
+        userNo2 = userId
 
         startDate = findViewById<TextView>(R.id.text_startDate)
         endDate = findViewById<TextView>(R.id.text_endDate)
 
-        val myCalendar = Calendar.getInstance()
         val myFormat = "dd-MM-yyyy"
         val sdf = SimpleDateFormat(myFormat, Locale.getDefault())
+        val currentDate = Calendar.getInstance()
+
+        startDate.text = sdf.format(currentDate.time)
+        endDate.text = sdf.format(currentDate.time)
+
+
+
         val newStartDate = Calendar.getInstance()
         val newEndDate = Calendar.getInstance()
 
@@ -62,7 +67,7 @@ class NewSurveyActivity : AppCompatActivity() {
                 newStartDate.get(Calendar.MONTH),
                 newStartDate.get(Calendar.DAY_OF_MONTH)
             )
-            dialog.datePicker.minDate = myCalendar.timeInMillis - 1000
+            dialog.datePicker.minDate = currentDate.timeInMillis - 1000
             dialog.show()
         }
 
@@ -93,8 +98,8 @@ class NewSurveyActivity : AppCompatActivity() {
     fun next(view: View) {
 
         val title = findViewById<EditText>(R.id.text_title).text.toString()
-        val startDate = findViewById<TextView>(R.id.text_startDate).text.toString()
-        val endDate = findViewById<TextView>(R.id.text_endDate).text.toString()
+        val startDate = startDate.text.toString()
+        val endDate = endDate.text.toString()
         val checkTitle = dbHelper.getSurvey(title)
 
         if (title == "") {
@@ -123,7 +128,7 @@ class NewSurveyActivity : AppCompatActivity() {
             intent.putExtra("title", title)
             intent.putExtra("startDate", startDate)
             intent.putExtra("endDate", endDate)
-            intent.putExtra("userId", userIddddd)
+            intent.putExtra("userId", userNo2)
             startActivity(intent)
         }
     }

@@ -27,15 +27,15 @@ class AdminInterfaceActivity : AppCompatActivity() {
         val surveyList = dbHelper.getAllSurveys()
         simpleList = findViewById<ListView>(R.id.listviewItem)
 
-        val appAdaptor = App(applicationContext, surveyList)
+        val surveyListsAdaptor = SurveyLists(applicationContext, surveyList)
 
-        simpleList!!.adapter = appAdaptor
+        simpleList!!.adapter = surveyListsAdaptor
 
         simpleList.isClickable = true
         simpleList.setOnItemClickListener { parent, view, positon, id ->
             val surveyTitle = surveyList[positon]
 
-            val intent = Intent(this, ChangeSurveyActivity::class.java)
+            val intent = Intent(this, SurveyResultsActivity::class.java)
             intent.putExtra("surveyid", surveyTitle.surveyId)
             intent.putExtra("userId", userIdd)
             startActivity(intent)

@@ -7,15 +7,15 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.surveyapp.Model.DataBaseHelper
-import com.example.surveyapp.Model.Question
+import com.example.surveyapp.Model.Questions
 import com.example.surveyapp.Model.Survey
 
 class EditQuestionsActivity : AppCompatActivity() {
     private val dbHelper = DataBaseHelper(this)
     private val questionEditTexts = mutableListOf<EditText>()
     private var transferId2 = 0
-    private val newArray = ArrayList<Question>()
-    private val questionUpdateList = ArrayList<Question>()
+    private val newArray = ArrayList<Questions>()
+    private val questionsUpdateList = ArrayList<Questions>()
     private var userNo = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {

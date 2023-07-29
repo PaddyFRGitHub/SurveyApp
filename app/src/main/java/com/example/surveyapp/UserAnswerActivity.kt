@@ -6,13 +6,13 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import com.example.surveyapp.Model.Answer
+import com.example.surveyapp.Model.Answers
 import com.example.surveyapp.Model.DataBaseHelper
-import com.example.surveyapp.Model.Question
+import com.example.surveyapp.Model.Questions
 
 class UserAnswerActivity : AppCompatActivity() {
     val dbHelper: DataBaseHelper = DataBaseHelper(this)
-    val newArray = ArrayList<Question>()
+    val newArray = ArrayList<Questions>()
     val answersTextArray = ArrayList<String>()
     var surveyId = 0
     var userId = 0
@@ -108,7 +108,7 @@ class UserAnswerActivity : AppCompatActivity() {
         checkSelected()
 
         for (i in 0 until 10) {
-            dbHelper.addAnswer(Answer(0, newArray[i].questionId, userId, answersTextArray[i]))
+            dbHelper.addAnswer(Answers(0, newArray[i].questionId, userId, answersTextArray[i]))
         }
 
         intent.putExtra("userId", userId)

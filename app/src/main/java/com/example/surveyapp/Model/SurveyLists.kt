@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.surveyapp.Model.Survey
 
-class App(private val context: Context, private val surveyList: ArrayList<Survey>) : BaseAdapter() {
+class SurveyLists(private val context: Context, private val surveyList: ArrayList<Survey>) : BaseAdapter() {
 
     override fun getItem(position: Int): Any = surveyList[position]
 

@@ -7,14 +7,14 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.surveyapp.Model.DataBaseHelper
-import com.example.surveyapp.Model.Question
+import com.example.surveyapp.Model.Questions
 import com.example.surveyapp.Model.Survey
 
 class QuestionPanelActivity : AppCompatActivity() {
 
     val dbHelper = DataBaseHelper(this)
-    val questionList = ArrayList<Question>()
-    var userIddd = 0
+    val questionsList = ArrayList<Questions>()
+    var userNo4 = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +22,7 @@ class QuestionPanelActivity : AppCompatActivity() {
         supportActionBar?.title = ""
         var getuserid = intent.getIntExtra("userId", 0)
 
-        userIddd = getuserid
+        userNo4 = getuserid
     }
 
     fun publish(view: View) {
@@ -69,23 +69,23 @@ class QuestionPanelActivity : AppCompatActivity() {
                 val surveyFinder = dbHelper.getSurvey(survey.surveyTitle)
                 val surveyId = surveyFinder.surveyId
 
-                questionList.add(Question(0, question1, surveyId))
-                questionList.add(Question(0, question2, surveyId))
-                questionList.add(Question(0, question3, surveyId))
-                questionList.add(Question(0, question4, surveyId))
-                questionList.add(Question(0, question5, surveyId))
-                questionList.add(Question(0, question6, surveyId))
-                questionList.add(Question(0, question7, surveyId))
-                questionList.add(Question(0, question8, surveyId))
-                questionList.add(Question(0, question9, surveyId))
-                questionList.add(Question(0, question10, surveyId))
+                questionsList.add(Questions(0, question1, surveyId))
+                questionsList.add(Questions(0, question2, surveyId))
+                questionsList.add(Questions(0, question3, surveyId))
+                questionsList.add(Questions(0, question4, surveyId))
+                questionsList.add(Questions(0, question5, surveyId))
+                questionsList.add(Questions(0, question6, surveyId))
+                questionsList.add(Questions(0, question7, surveyId))
+                questionsList.add(Questions(0, question8, surveyId))
+                questionsList.add(Questions(0, question9, surveyId))
+                questionsList.add(Questions(0, question10, surveyId))
 
                 for (i in 0 until 10) {
-                    dbHelper.addQuestion(questionList[i])
+                    dbHelper.addQuestion(questionsList[i])
                 }
 
                 val intent = Intent(this, AdminInterfaceActivity::class.java)
-                intent.putExtra("userId",userIddd)
+                intent.putExtra("userId",userNo4)
                 startActivity(intent)
             } else {
                 Toast.makeText(this, "Error: The user not added", Toast.LENGTH_SHORT).show()
