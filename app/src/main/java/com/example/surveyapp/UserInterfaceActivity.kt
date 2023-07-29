@@ -71,7 +71,4 @@ class UserInterfaceActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    override fun onBackPressed() {
-        return
-    }
 }

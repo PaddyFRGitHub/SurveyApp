@@ -10,7 +10,7 @@ import com.example.surveyapp.Model.DataBaseHelper
 import com.example.surveyapp.Model.Question
 import com.example.surveyapp.Model.Survey
 
-class EditSurveyQuestionsActivity : AppCompatActivity() {
+class EditQuestionsActivity : AppCompatActivity() {
     val dbHelper = DataBaseHelper(this)
     var transferId2 = 0
     val newArray = ArrayList<Question>()
@@ -19,7 +19,7 @@ class EditSurveyQuestionsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_survey_questions)
+        setContentView(R.layout.activity_edit_questions)
         supportActionBar?.title = ""
 
         val transferId = intent.getIntExtra("surveyId", 0)
@@ -112,7 +112,4 @@ class EditSurveyQuestionsActivity : AppCompatActivity() {
         finish()
     }
 
-    override fun onBackPressed() {
-        return
-    }
 }

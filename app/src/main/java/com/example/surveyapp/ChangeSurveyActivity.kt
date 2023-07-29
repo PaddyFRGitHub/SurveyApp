@@ -149,8 +149,4 @@ class ChangeSurveyActivity : AppCompatActivity() {
     fun goBack(view: View) {
         finish()
     }
-
-    override fun onBackPressed() {
-        return
-    }
 }

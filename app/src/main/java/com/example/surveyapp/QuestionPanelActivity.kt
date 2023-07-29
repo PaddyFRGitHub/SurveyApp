@@ -98,8 +98,4 @@ class QuestionPanelActivity : AppCompatActivity() {
         finish()
     }
 
-    override fun onBackPressed() {
-        return
-    }
-
 }

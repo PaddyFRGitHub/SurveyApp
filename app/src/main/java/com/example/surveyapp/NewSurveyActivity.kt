@@ -132,9 +132,4 @@ class NewSurveyActivity : AppCompatActivity() {
         finish()
     }
 
-    override fun onBackPressed() {
-        return
-    }
-
-
 }

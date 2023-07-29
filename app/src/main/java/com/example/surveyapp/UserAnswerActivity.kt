@@ -152,7 +152,4 @@ class UserAnswerActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    override fun onBackPressed() {
-        return
-    }
 }

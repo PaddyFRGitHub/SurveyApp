@@ -1,9 +1,12 @@
 package com.example.surveyapp
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
+import android.provider.MediaStore.Audio.Radio
 import android.view.View
+import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.RadioButton
 import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,12 +18,13 @@ class RegisterActivity : AppCompatActivity() {
     private val dbHelper: DataBaseHelper = DataBaseHelper(this)
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         supportActionBar?.title = ""
 
-        val toggle = findViewById<Switch>(R.id.btn_SwitchLogin)
+        val toggle = findViewById<CheckBox>(R.id.btn_ChangeUser)
         toggle.text = "User"
         findViewById<EditText>(R.id.adminCode).visibility = View.INVISIBLE
 
@@ -36,7 +40,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun register(view: View) {
-        val switch = findViewById<Switch>(R.id.btn_SwitchLogin)
+        val checkBox = findViewById<CheckBox>(R.id.btn_ChangeUser)
         val username = findViewById<EditText>(R.id.text_PNumberRegister).text.toString()
         val password = findViewById<EditText>(R.id.text_Password1).text.toString()
         val code = findViewById<EditText>(R.id.adminCode).text.toString()
@@ -46,7 +50,7 @@ class RegisterActivity : AppCompatActivity() {
             return
         }
 
-        val isAdmin = switch.text == "Admin"
+        val isAdmin = checkBox.text == "Admin"
 
         if (isAdmin && code != "99") {
             Toast.makeText(this, "Incorrect admin code", Toast.LENGTH_SHORT).show()
@@ -75,7 +79,4 @@ class RegisterActivity : AppCompatActivity() {
         finish()
     }
 
-    override fun onBackPressed() {
-        return
-    }
 }

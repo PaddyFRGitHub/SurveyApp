@@ -28,14 +28,7 @@
                     android:value="" />
         </activity>
         <activity
-                android:name=".ChangeUserSurveyActivity"
-                android:exported="false">
-            <meta-data
-                    android:name="android.app.lib_name"
-                    android:value="" />
-        </activity>
-        <activity
-                android:name=".EditSurveyQuestionsActivity"
+                android:name=".EditQuestionsActivity"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"

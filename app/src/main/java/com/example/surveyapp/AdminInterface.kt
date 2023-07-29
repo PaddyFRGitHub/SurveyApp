@@ -52,8 +52,4 @@ class AdminInterface : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-
-    override fun onBackPressed() {
-        return
-    }
 }

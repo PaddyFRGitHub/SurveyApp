@@ -96,7 +96,7 @@ class EditSurveyMainActivity : AppCompatActivity() {
     }
 
     fun next2(view: View) {
-        val intent = Intent(this, EditSurveyQuestionsActivity::class.java)
+        val intent = Intent(this, EditQuestionsActivity::class.java)
 
         val title = findViewById<EditText>(R.id.text_title2).text.toString()
         val startDate = findViewById<TextView>(R.id.text_startDate2).text.toString()
@@ -123,9 +123,5 @@ class EditSurveyMainActivity : AppCompatActivity() {
 
     fun goBack2(view: View) {
         finish()
-    }
-
-    override fun onBackPressed() {
-        return
     }
 }

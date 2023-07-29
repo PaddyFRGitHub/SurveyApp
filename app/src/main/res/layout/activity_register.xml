@@ -14,23 +14,6 @@
             android:alpha="0.3"
             android:scaleType="centerCrop"/>
 
-    <Switch
-            android:id="@+id/btn_SwitchLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700"
-            android:width="150dp"
-            android:height="50dp"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewRegister"
-            android:layout_marginTop="8dp"
-            app:layout_constraintHorizontal_bias="0.456" />
-
     <TextView
             android:id="@+id/textViewRegister"
             android:layout_width="wrap_content"
@@ -83,7 +66,6 @@
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="20dp"
             android:layout_marginEnd="32dp"
             android:textColor="@color/purple_700"
             android:textColorHint="@color/purple_700"
@@ -92,12 +74,12 @@
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_SwitchLogin"
-            app:layout_constraintHorizontal_bias="0.456" />
+            app:layout_constraintHorizontal_bias="0.456"
+            app:layout_constraintTop_toBottomOf="@+id/btn_ChangeUser" />
 
     <Button
             android:id="@+id/btn_RegisterAccount"
-            android:layout_width="153dp"
+            android:layout_width="329dp"
             android:layout_height="55dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
@@ -106,11 +88,13 @@
             android:text="Register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_Password1" />
+            app:layout_constraintTop_toBottomOf="@+id/text_Password1"
+            android:layout_marginTop="64dp"
+            app:layout_constraintHorizontal_bias="0.611" />
 
     <Button
             android:id="@+id/btn_BackToLogin"
-            android:layout_width="143dp"
+            android:layout_width="331dp"
             android:layout_height="53dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
@@ -121,6 +105,21 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_RegisterAccount"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintVertical_bias="0.223" />
+            app:layout_constraintHorizontal_bias="0.562"
+            app:layout_constraintVertical_bias="0.501" />
+
+    <CheckBox
+            android:id="@+id/btn_ChangeUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:textColor="@color/purple_700"
+            android:textColorHint="@color/purple_700"
+            android:width="150dp"
+            android:height="50dp"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRegister"
+            app:layout_constraintHorizontal_bias="0.393" />
 </androidx.constraintlayout.widget.ConstraintLayout>
