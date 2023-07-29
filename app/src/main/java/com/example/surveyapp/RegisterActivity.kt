@@ -15,7 +15,6 @@ class RegisterActivity : AppCompatActivity() {
     private val dbHelper: DataBaseHelper = DataBaseHelper(this)
 
 
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)

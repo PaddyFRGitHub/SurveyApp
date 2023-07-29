@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.surveyapp.Model.DataBaseHelper
 
@@ -42,6 +43,26 @@ class UserInterfaceActivity : AppCompatActivity() {
 
 
             startActivity(intent)
+        }
+
+
+        simpleList.setOnItemClickListener { parent, view, positon, id ->
+            val surveyTitle = surveyList[positon]
+            val surveyId = surveyTitle.surveyId
+
+            val intent = if (dbHelper.isSurveyCompletedByUser(userId, surveyId)) {
+
+                Toast.makeText(this, "You have already completed this survey.", Toast.LENGTH_SHORT).show()
+                null
+            } else {
+
+                Intent(this, UserAnswerActivity::class.java).apply {
+                    putExtra("surveyId", surveyId)
+                    putExtra("userId", userId)
+                }
+            }
+
+            intent?.let { startActivity(it) }
         }
     }
 

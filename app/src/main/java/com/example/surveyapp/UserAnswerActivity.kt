@@ -90,7 +90,6 @@ class UserAnswerActivity : AppCompatActivity() {
     }
 
     fun complete(view: View) {
-        val intent = Intent(this, UserInterfaceActivity::class.java)
         val button1 = findViewById<RadioButton>(R.id.radioButton)
         val button2 = findViewById<RadioButton>(R.id.radioButton2)
         val button3 = findViewById<RadioButton>(R.id.radioButton3)
@@ -112,6 +111,12 @@ class UserAnswerActivity : AppCompatActivity() {
             dbHelper.addAnswer(Answer(0, newArray[i].questionId, userId, answersTextArray[i]))
         }
 
+        intent.putExtra("userId", userId)
+        startActivity(intent)
+
+        dbHelper.markSurveyAsCompleted(userId, surveyId)
+
+        val intent = Intent(this, UserInterfaceActivity::class.java)
         intent.putExtra("userId", userId)
         startActivity(intent)
     }

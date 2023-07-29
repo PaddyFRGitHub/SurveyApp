@@ -8,28 +8,18 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.surveyapp.R
 
-class Results(private val appContext: Context, private val resultsList: ArrayList<Result>) :
+class Results(private val context: Context, private val resultsList: ArrayList<Result>) :
     BaseAdapter() {
-    private val inflater: LayoutInflater =
-        appContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    private val inflater: LayoutInflater = LayoutInflater.from(context)
 
-    override fun getItem(p0: Int): Any {
-        return p0
-    }
+    override fun getItem(position: Int): Any = resultsList[position]
 
-    override fun getCount(): Int {
-        return resultsList.size
-    }
+    override fun getCount(): Int = resultsList.size
 
-    override fun getItemId(p0: Int): Long {
-        return p0.toLong()
-    }
+    override fun getItemId(position: Int): Long = position.toLong()
 
-
-    override fun getView(p0: Int, view: View?, parent: ViewGroup?): View {
-        var view: View? = view
-
-        view = inflater.inflate(R.layout.activity_result_list_view, parent, false)
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val view: View = convertView ?: inflater.inflate(R.layout.activity_result_list_view, parent, false)
 
         val questionNo = view.findViewById<TextView>(R.id.questionNo)
         val result1 = view.findViewById<TextView>(R.id.text_result1)
@@ -38,14 +28,17 @@ class Results(private val appContext: Context, private val resultsList: ArrayLis
         val result4 = view.findViewById<TextView>(R.id.text_result4)
         val result5 = view.findViewById<TextView>(R.id.text_result5)
 
-
-        questionNo.text = "Question: " + resultsList[p0].x.toString()
-        result1.text = resultsList[p0].result1.toString() + "%"
-        result2.text = resultsList[p0].result2.toString() + "%"
-        result3.text = resultsList[p0].result3.toString() + "%"
-        result4.text = resultsList[p0].result4.toString() + "%"
-        result5.text = resultsList[p0].result5.toString() + "%"
+        val currentResult = resultsList[position]
+        questionNo.text = "Question: ${currentResult.x}"
+        result1.text = "${currentResult.result1}%"
+        result2.text = "${currentResult.result2}%"
+        result3.text = "${currentResult.result3}%"
+        result4.text = "${currentResult.result4}%"
+        result5.text = "${currentResult.result5}%"
 
         return view
     }
 }
+
+
+

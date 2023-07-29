@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import java.sql.SQLException
 
 private val DataBaseName = "AppDatabase.db"
@@ -38,6 +39,13 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
     val answerQuestionId = "questionId"
     val answerUserId = "userId"
     val answerText = "answerText"
+
+    /*Completion Table*/
+    val completion = "Completion"
+    val completionId = "completionId"
+    val completionUserId = "userId"
+    val completionSurveyId = "surveyId"
+
 
     override fun onCreate(db: SQLiteDatabase?) {
         try {
@@ -87,6 +95,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
 
 
+
     fun getUserByID(uId: Int): User {
         val db: SQLiteDatabase = this.readableDatabase
         val sqlStatement = "SELECT * FROM $users WHERE $userId = $uId"
@@ -102,7 +111,6 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
                 cursor.getInt(3)
             )
         } else {
-            db.close()
             return User(0, "User not found", "Error", 0)
         }
     }
@@ -114,7 +122,6 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
         val cursor: Cursor = db.rawQuery(sqlStatement, null)
 
         if (cursor.moveToFirst()) {
-            db.close()
             return User(
                 cursor.getInt(0),
                 cursor.getString(1),
@@ -138,6 +145,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
         val success = db.insert(users, null, cv)
         db.close()
+
         return success != -1L
 
     }
@@ -268,6 +276,26 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
     }
 
 
+    fun markSurveyAsCompleted(userId: Int, surveyId: Int) {
+        val db = this.writableDatabase
+        val values = ContentValues().apply {
+            put(completionUserId, userId)
+            put(completionSurveyId, surveyId)
+        }
+        db.insert(completion, null, values)
+        db.close()
+    }
+
+
+    fun isSurveyCompletedByUser(userId: Int, surveyId: Int): Boolean {
+        val selectQuery = "SELECT * FROM $completion WHERE $completionUserId = $userId AND $completionSurveyId = $surveyId"
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(selectQuery, null)
+        val isCompleted = cursor.count > 0
+        cursor.close()
+        db.close()
+        return isCompleted
+    }
 
 
     fun addQuestion(question: Question): Boolean {

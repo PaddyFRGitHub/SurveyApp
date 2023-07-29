@@ -8,41 +8,27 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.surveyapp.Model.Survey
 
-class App(private val appContext: Context, private val surveyList: ArrayList<Survey>) :
-    BaseAdapter() {
+class App(private val context: Context, private val surveyList: ArrayList<Survey>) : BaseAdapter() {
 
-    private val inflater: LayoutInflater =
-        appContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+    override fun getItem(position: Int): Any = surveyList[position]
 
-    override fun getItem(p0: Int): Any {
-        return p0
-    }
+    override fun getCount(): Int = surveyList.size
 
-    override fun getCount(): Int {
-        return surveyList.size
-    }
+    override fun getItemId(position: Int): Long = position.toLong()
 
-    override fun getItemId(p0: Int): Long {
-        return p0.toLong()
-    }
-
-
-    override fun getView(p0: Int, view: View?, parent: ViewGroup?): View {
-        var view: View? = view
-
-        view = inflater.inflate(R.layout.activity_list_view, parent, false)
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        val view: View = convertView ?: LayoutInflater.from(context)
+            .inflate(R.layout.activity_list_view, parent, false)
 
         val surveyTitle = view.findViewById<TextView>(R.id.textView3)
         val surveyStartDate = view.findViewById<TextView>(R.id.textView4)
         val surveyEndDate = view.findViewById<TextView>(R.id.textView5)
 
-
-        surveyTitle.text = surveyList[p0].surveyTitle
-        surveyStartDate.text = surveyList[p0].surveyStartDate.toString()
-        surveyEndDate.text = surveyList[p0].surveyEndDate.toString()
+        val currentSurvey = surveyList[position]
+        surveyTitle.text = currentSurvey.surveyTitle
+        surveyStartDate.text = currentSurvey.surveyStartDate.toString()
+        surveyEndDate.text = currentSurvey.surveyEndDate.toString()
 
         return view
     }
-
-
 }
