@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.surveyapp.Model.DataBaseHelper
 
-class AdminPanel : AppCompatActivity() {
+class AdminInterface : AppCompatActivity() {
 
     lateinit var simpleList: ListView
 

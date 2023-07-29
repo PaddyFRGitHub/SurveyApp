@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#CCCCFF"
-        tools:context=".AdminPanel">
+        tools:context=".AdminInterface">
 
     <ImageView
             app:srcCompat="@drawable/dmulogo"
@@ -41,10 +41,10 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-            android:id="@+id/btn_makeNewSurvey"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/purple_700"
+            android:id="@+id/btn_newSurvey"
+            android:layout_width="272dp"
+            android:layout_height="44dp"
+            android:backgroundTint="#9EEA46"
             android:onClick="newSurveyButton"
             android:text="New Survey"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,13 +54,20 @@
 
     <Button
             android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#627BB5"
+            android:layout_width="154dp"
+            android:layout_height="64dp"
+            android:backgroundTint="#FF6262"
             android:onClick="logOutBtn"
-            android:text="LogOut"
+            android:text="Log Out"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTintMode="src_atop"
+            android:bottomRightRadius="10dp"
+            android:bottomLeftRadius="10dp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            app:icon="@drawable/common_full_open_on_phone"
+            android:layout_marginEnd="16dp" />
 
     <LinearLayout
             android:id="@+id/LinearLayoutV"

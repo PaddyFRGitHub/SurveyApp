@@ -20,10 +20,10 @@ class MainActivity : AppCompatActivity() {
 
     fun login(view: View) {
 
-        val intent = Intent(this, AdminPanel::class.java)
+        val intent = Intent(this, AdminInterface::class.java)
         val intent2 = Intent(this, UserInterfaceActivity::class.java)
 
-        val userName = findViewById<EditText>(R.id.text_username).text.toString()
+        val userName = findViewById<EditText>(R.id.text_pnumber).text.toString()
         val passWord = findViewById<EditText>(R.id.text_Password).text.toString()
 
         val actualUsername = dbHelper.getUser(userName)

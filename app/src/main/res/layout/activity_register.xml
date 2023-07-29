@@ -47,20 +47,20 @@
             android:layout_marginTop="16dp" />
 
     <EditText
-        android:id="@+id/text_UserNameRegister"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:textColor="@color/purple_700"
-        android:textColorHint="@color/purple_700"
-        android:ems="10"
-        android:hint="Enter Username"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adminCode" />
+            android:id="@+id/text_PNumberRegister"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:textColor="@color/purple_700"
+            android:textColorHint="@color/purple_700"
+            android:ems="10"
+            android:hint="Enter P Number"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adminCode" />
 
     <EditText
         android:id="@+id/text_Password1"
@@ -76,7 +76,7 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_UserNameRegister" />
+        app:layout_constraintTop_toBottomOf="@+id/text_PNumberRegister" />
 
     <EditText
             android:id="@+id/adminCode"

@@ -1,7 +1,7 @@
 package com.example.surveyapp
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Switch
@@ -37,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
 
     fun register(view: View) {
         val switch = findViewById<Switch>(R.id.btn_SwitchLogin)
-        val username = findViewById<EditText>(R.id.text_UserNameRegister).text.toString()
+        val username = findViewById<EditText>(R.id.text_PNumberRegister).text.toString()
         val password = findViewById<EditText>(R.id.text_Password1).text.toString()
         val code = findViewById<EditText>(R.id.adminCode).text.toString()
 
@@ -52,7 +52,7 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this, "Incorrect admin code", Toast.LENGTH_SHORT).show()
             return
         }
-        if (dbHelper.getUser(username) != null) {
+        if (dbHelper.getUser(username) == null) {
             Toast.makeText(this, "User already exists", Toast.LENGTH_SHORT).show()
             return
         }
@@ -61,7 +61,7 @@ class RegisterActivity : AppCompatActivity() {
 
         if (dbHelper.addUser(user)) {
             Toast.makeText(this, "User added", Toast.LENGTH_SHORT).show()
-            findViewById<EditText>(R.id.text_UserNameRegister).text.clear()
+            findViewById<EditText>(R.id.text_PNumberRegister).text.clear()
             findViewById<EditText>(R.id.text_Password1).text.clear()
             if (isAdmin) {
                 findViewById<EditText>(R.id.adminCode).text.clear()

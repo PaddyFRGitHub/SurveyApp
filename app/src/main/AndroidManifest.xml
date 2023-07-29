@@ -91,7 +91,7 @@
                     android:value="" />
         </activity>
         <activity
-                android:name=".AdminPanel"
+                android:name=".AdminInterface"
                 android:exported="false">
             <meta-data
                     android:name="android.app.lib_name"

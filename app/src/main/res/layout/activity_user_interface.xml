@@ -38,15 +38,20 @@
     <!-- Logout Button -->
     <Button
             android:id="@+id/btn_logout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#627BB5"
+            android:layout_width="154dp"
+            android:layout_height="64dp"
+            android:backgroundTint="#FF6262"
             android:onClick="logOutBtn"
-            android:text="Logout"
+            android:text="Log Out"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="20dp" />
+            android:backgroundTintMode="src_atop"
+            android:bottomRightRadius="10dp"
+            android:bottomLeftRadius="10dp"
+            android:topLeftRadius="10dp"
+            android:topRightRadius="10dp"
+            app:icon="@drawable/common_full_open_on_phone"
+            android:layout_marginEnd="16dp" />
 
     <!-- Title TextView -->
     <TextView

@@ -16,7 +16,7 @@ class ChangeSurveyActivity : AppCompatActivity() {
     val questions = ArrayList<Question>()
     var answerList = ArrayList<Answer>()
     var questionIdList = ArrayList<Int>()
-    var resultList = ArrayList<com.example.surveyapp.Model.Result>()
+    var resultList = ArrayList<com.example.surveyapp.Model.Choices>()
     var surveyid = 0
     lateinit var simpleList: ListView
     var userId = 0
@@ -81,7 +81,7 @@ class ChangeSurveyActivity : AppCompatActivity() {
                 var d = disagre.toDouble() / (totalAnswers / 10) * 100
                 var x = strongDisagree.toDouble() / (totalAnswers / 10) * 100
                 resultList.add(
-                    Result(
+                    Choices(
                         j++,
                         totalAnswers,
                         a.roundToInt(),
@@ -95,7 +95,7 @@ class ChangeSurveyActivity : AppCompatActivity() {
         } catch (e: IllegalArgumentException) {
             var f = 1
             for (questionId in questionIdList) {
-                resultList.add(Result(f++, 0, 0, 0, 0, 0, 0))
+                resultList.add(Choices(f++, 0, 0, 0, 0, 0, 0))
             }
         }
 
@@ -124,7 +124,7 @@ class ChangeSurveyActivity : AppCompatActivity() {
     fun delete(view: View) {
 
         if (dbHelper.deleteSurvey(surveyid)) {
-            val intent = Intent(this, AdminPanel::class.java)
+            val intent = Intent(this, AdminInterface::class.java)
 
             try {
                 for (i in 0 until 10) {

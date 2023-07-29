@@ -84,7 +84,7 @@ class QuestionPanelActivity : AppCompatActivity() {
                     dbHelper.addQuestion(questionList[i])
                 }
 
-                val intent = Intent(this, AdminPanel::class.java)
+                val intent = Intent(this, AdminInterface::class.java)
                 intent.putExtra("userId",userIddd)
                 startActivity(intent)
             } else {

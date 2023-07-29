@@ -8,7 +8,7 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.surveyapp.R
 
-class Results(private val context: Context, private val resultsList: ArrayList<Result>) :
+class Results(private val context: Context, private val resultsList: ArrayList<Choices>) :
     BaseAdapter() {
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 

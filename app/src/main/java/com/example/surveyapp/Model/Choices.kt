@@ -1,6 +1,6 @@
 package com.example.surveyapp.Model
 
-data class Result(
+data class Choices(
     val x: Int,
     val total: Int,
     val result1: Int,

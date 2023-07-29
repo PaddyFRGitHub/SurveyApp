@@ -95,7 +95,6 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
 
 
-
     fun getUserByID(uId: Int): User {
         val db: SQLiteDatabase = this.readableDatabase
         val sqlStatement = "SELECT * FROM $users WHERE $userId = $uId"
@@ -175,7 +174,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun getSurvey(uName: String): Survey {
         val db: SQLiteDatabase = this.readableDatabase
-        val sqlStatement = "SELECT * FROM $surveys WHERE $surveyTitle = '$uName'"
+        val sanitizedTitle = uName.replace("'", "''") // Escape single quotes
+        val sqlStatement = "SELECT * FROM $surveys WHERE $surveyTitle = '$sanitizedTitle'"
 
         val cursor: Cursor = db.rawQuery(sqlStatement, null)
 
@@ -321,7 +321,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
         return result
     }
 
-    fun updateQuetion(question: Question): Boolean {
+    fun updateQuestion(question: Question): Boolean {
 
         val db: SQLiteDatabase = this.writableDatabase
         val cv: ContentValues = ContentValues()
