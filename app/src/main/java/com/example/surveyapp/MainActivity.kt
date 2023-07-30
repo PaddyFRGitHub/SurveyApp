@@ -20,12 +20,10 @@ class MainActivity : AppCompatActivity() {
 
     fun login(view: View) {
 
-        val intent = Intent(this, AdminInterfaceActivity::class.java)
-        val intent2 = Intent(this, UserInterfaceActivity::class.java)
 
+        val intent2 = Intent(this, UserInterfaceActivity::class.java)
         val userName = findViewById<EditText>(R.id.text_pnumber).text.toString()
         val passWord = findViewById<EditText>(R.id.text_Password).text.toString()
-
         val actualUsername = dbHelper.getUser(userName)
 
         if (userName.isBlank() && passWord.isBlank()) {
@@ -45,23 +43,26 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "Wrong username or password!", Toast.LENGTH_LONG).show()
             return
         }
-        if (userName == actualUsername.userName && passWord == actualUsername.passWord && actualUsername.isAdmin == 0) {
-            intent2.putExtra("userId", actualUsername.userId)
-            startActivity(intent2)
-            return
-        }
-        if (userName == actualUsername.userName && passWord == actualUsername.passWord && actualUsername.isAdmin == 1) {
-            intent.putExtra("userId", actualUsername.userId)
-            startActivity(intent)
-            return
+        if (userName == actualUsername.userName && passWord == actualUsername.passWord) {
+            if (actualUsername.isAdmin == 0) {
+                intent2.putExtra("userId", actualUsername.userId)
+                startActivity(intent2)
+            } else {
+                Toast.makeText(this, "Please use the admin portal", Toast.LENGTH_LONG).show()
+            }
         } else {
-            Toast.makeText(this, "Invalid username or password ", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Invalid username or password", Toast.LENGTH_LONG).show()
         }
     }
 
 
     fun register(view: View) {
         val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun portal(view: View) {
+        val intent = Intent(this, AdminPortalActivity::class.java)
         startActivity(intent)
     }
 

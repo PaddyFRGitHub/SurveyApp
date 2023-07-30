@@ -17,7 +17,7 @@ class AdminInterfaceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_admin_panel)
+        setContentView(R.layout.activity_admin_interface)
         supportActionBar?.title = ""
 
         userIdd = intent.getIntExtra("userId", 0)

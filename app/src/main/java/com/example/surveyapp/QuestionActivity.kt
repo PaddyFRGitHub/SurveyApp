@@ -10,7 +10,7 @@ import com.example.surveyapp.Model.DataBaseHelper
 import com.example.surveyapp.Model.Questions
 import com.example.surveyapp.Model.Survey
 
-class QuestionPanelActivity : AppCompatActivity() {
+class QuestionActivity : AppCompatActivity() {
 
     val dbHelper = DataBaseHelper(this)
     val questionsList = ArrayList<Questions>()
@@ -18,7 +18,7 @@ class QuestionPanelActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_question_panel)
+        setContentView(R.layout.activity_question)
         supportActionBar?.title = ""
         var getuserid = intent.getIntExtra("userId", 0)
 

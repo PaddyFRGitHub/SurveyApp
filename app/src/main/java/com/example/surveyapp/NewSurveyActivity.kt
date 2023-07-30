@@ -23,7 +23,7 @@ class NewSurveyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_survey_panel)
+        setContentView(R.layout.activity_new_survey)
         supportActionBar?.title = ""
         var userId = intent.getIntExtra("USERID", 0)
         userNo2 = userId
@@ -123,7 +123,7 @@ class NewSurveyActivity : AppCompatActivity() {
             ).show()
             return
         } else {
-            val intent = Intent(this, QuestionPanelActivity::class.java)
+            val intent = Intent(this, QuestionActivity::class.java)
 
             intent.putExtra("title", title)
             intent.putExtra("startDate", startDate)
