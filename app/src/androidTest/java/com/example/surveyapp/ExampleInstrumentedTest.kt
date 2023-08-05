@@ -2,7 +2,6 @@ package com.example.surveyapp
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.example.surveyapp.Model.DataBaseHelper
 import com.example.surveyapp.Model.User
 import org.junit.Assert.*
 import org.junit.Test

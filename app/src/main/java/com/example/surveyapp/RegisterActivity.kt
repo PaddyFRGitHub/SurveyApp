@@ -1,28 +1,46 @@
 package com.example.surveyapp
 
-import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.provider.MediaStore.Audio.Radio
+import android.util.Log
 import android.view.View
 import android.widget.CheckBox
 import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.Switch
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.surveyapp.Model.DataBaseHelper
+import com.example.surveyapp.Model.Managers.UserManager
 import com.example.surveyapp.Model.User
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
 class RegisterActivity : AppCompatActivity() {
-
-    private val dbHelper: DataBaseHelper = DataBaseHelper(this)
-
-
+    private val userManager: UserManager by lazy { UserManager() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
         supportActionBar?.title = ""
+
+
+        MainScope().launch {
+            userManager.currentUser.collect { value ->
+                Log.d("TESTY", "user changed to: $value")
+                value?.let {
+                    if (it.isAdmin) {
+
+                        val adminActivity = Intent(this@RegisterActivity, AdminInterfaceActivity::class.java)
+                        startActivity(adminActivity)
+
+                    } else {
+                        val studentActivity = Intent(this@RegisterActivity, UserInterfaceActivity::class.java)
+                        startActivity(studentActivity)
+                    }
+                }
+            }
+        }
 
         val toggle = findViewById<CheckBox>(R.id.btn_ChangeUser)
         toggle.text = "Student"
@@ -56,22 +74,14 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this, "Incorrect admin code", Toast.LENGTH_SHORT).show()
             return
         }
-        if (dbHelper.getUser(username) == null) {
-            Toast.makeText(this, "User already exists", Toast.LENGTH_SHORT).show()
-            return
-        }
 
-        val user = User(0, username, password, if (isAdmin) 1 else 0)
+        userManager.register(username, password, isAdmin)
 
-        if (dbHelper.addUser(user)) {
-            Toast.makeText(this, "User added", Toast.LENGTH_SHORT).show()
-            findViewById<EditText>(R.id.text_PNumberRegister).text.clear()
-            findViewById<EditText>(R.id.text_Password1).text.clear()
-            if (isAdmin) {
-                findViewById<EditText>(R.id.adminCode).text.clear()
-            }
-        } else {
-            Toast.makeText(this, "Error: User not added", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "User added", Toast.LENGTH_SHORT).show()
+        findViewById<EditText>(R.id.text_PNumberRegister).text.clear()
+        findViewById<EditText>(R.id.text_Password1).text.clear()
+        if (isAdmin) {
+            findViewById<EditText>(R.id.adminCode).text.clear()
         }
     }
 

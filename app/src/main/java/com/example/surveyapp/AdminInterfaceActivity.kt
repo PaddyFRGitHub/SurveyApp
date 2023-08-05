@@ -6,37 +6,34 @@ import android.view.View
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.surveyapp.Model.DataBaseHelper
 
 class AdminInterfaceActivity : AppCompatActivity() {
 
     lateinit var simpleList: ListView
 
     var userIdd = 0
-    val dbHelper: DataBaseHelper = DataBaseHelper(this)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_panel)
         supportActionBar?.title = ""
 
         userIdd = intent.getIntExtra("userId", 0)
-        val displayUser = dbHelper.getUserByID(userIdd)
-        findViewById<TextView>(R.id.welcome).text = displayUser.userName
+        //val displayUser = dbHelper.getUserByID(userIdd)
+        //findViewById<TextView>(R.id.welcome).text = displayUser.userName
 
-        val surveyList = dbHelper.getAllSurveys()
+        //val surveyList = dbHelper.getAllSurveys()
         simpleList = findViewById<ListView>(R.id.listviewItem)
 
-        val surveyListsAdaptor = SurveyLists(applicationContext, surveyList)
+        //val surveyListsAdaptor = SurveyLists(applicationContext, surveyList)
 
-        simpleList!!.adapter = surveyListsAdaptor
+        //simpleList!!.adapter = surveyListsAdaptor
 
         simpleList.isClickable = true
         simpleList.setOnItemClickListener { parent, view, positon, id ->
-            val surveyTitle = surveyList[positon]
+            //val surveyTitle = surveyList[positon]
 
             val intent = Intent(this, SurveyResultsActivity::class.java)
-            intent.putExtra("surveyid", surveyTitle.surveyId)
+            //intent.putExtra("surveyid", surveyTitle.surveyId)
             intent.putExtra("userId", userIdd)
             startActivity(intent)
         }
