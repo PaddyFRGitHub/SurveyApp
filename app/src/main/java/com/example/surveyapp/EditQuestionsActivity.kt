@@ -15,7 +15,6 @@ class EditQuestionsActivity : AppCompatActivity() {
     private val questionEditTexts = mutableListOf<EditText>()
     private var transferId2 = 0
     private val newArray = ArrayList<Questions>()
-    private val questionsUpdateList = ArrayList<Questions>()
     private var userNo = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +27,6 @@ class EditQuestionsActivity : AppCompatActivity() {
         transferId2 = transferId
         val questions = dbHelper.getAllQuestionsBySurveyId(transferId2)
 
-        // Initialize the questionEditTexts list
         questionEditTexts.addAll(
             listOf(
                 findViewById(R.id.text_question11),
@@ -59,7 +57,6 @@ class EditQuestionsActivity : AppCompatActivity() {
         val startDate = intent.getStringExtra("startDate").toString()
         val endDate = intent.getStringExtra("endDate").toString()
 
-        // Update the question texts from the EditText views
         for (i in 0 until newArray.size) {
             newArray[i].questionText = questionEditTexts[i].text.toString()
         }

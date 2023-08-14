@@ -16,17 +16,20 @@
 
     <TextView
             android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="385dp"
+            android:layout_height="45dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="36dp"
             android:layout_marginEnd="32dp"
-            android:text="Survey App"
+            android:text="Student Surveys System"
             android:textColor="@color/purple_700"
-            android:textSize="34sp"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textAlignment="center"
+            android:textStyle="bold" />
 
     <EditText
             android:id="@+id/text_pnumber"
@@ -37,31 +40,35 @@
             android:layout_marginEnd="32dp"
             android:width="250dp"
             android:ems="10"
-            android:hint="Enter P Number"
+            android:hint="P Number"
             android:inputType="textPersonName"
             android:textColor="@color/purple_700"
             android:textColorHint="@color/purple_700"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <EditText
-        android:id="@+id/text_Password"
-        android:layout_width="260dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:width="250dp"
-        android:ems="10"
-        android:hint="Enter Password"
-        android:inputType="textPassword"
-        android:textColor="@color/purple_700"
-        android:textColorHint="@color/purple_700"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_pnumber" />
+            android:id="@+id/text_Password"
+            android:layout_width="260dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="32dp"
+            android:width="250dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="@color/purple_700"
+            android:textColorHint="@color/purple_700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_pnumber"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
             android:id="@+id/btn_login"
@@ -77,7 +84,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_Password"
-            app:layout_constraintHorizontal_bias="0.514" />
+            app:layout_constraintHorizontal_bias="0.514"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
             android:id="@+id/btn_register"
@@ -93,7 +101,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_login"
-            app:layout_constraintHorizontal_bias="0.473" />
+            app:layout_constraintHorizontal_bias="0.473"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
             android:id="@+id/btn_adminPortal"
@@ -111,6 +120,7 @@
             app:layout_constraintHorizontal_bias="0.552"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_register"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.0"
+            android:fontFamily="sans-serif-condensed-medium" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

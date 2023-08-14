@@ -12,38 +12,33 @@ import kotlin.math.roundToInt
 
 class SurveyResultsActivity : AppCompatActivity() {
 
-    val dbHelper: DataBaseHelper = DataBaseHelper(this)
-    val questions = ArrayList<Questions>()
-    var answersList = ArrayList<Answers>()
-    var questionIdList = ArrayList<Int>()
-    var resultList = ArrayList<com.example.surveyapp.Model.Choices>()
-    var surveyid = 0
-    lateinit var simpleList: ListView
-    var userId = 0
+
+    private val dbHelper: DataBaseHelper = DataBaseHelper(this)
+    private val questions = ArrayList<Questions>()
+    private var answersList = ArrayList<Answers>()
+    private var questionIdList = ArrayList<Int>()
+    private var resultList = ArrayList<com.example.surveyapp.Model.Choices>()
+    private var surveyId = 0
+    private lateinit var simpleList: ListView
+    private var userId = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_survey_results)
         supportActionBar?.title = ""
 
-        var getsurveid = intent.getIntExtra("surveyid", 0)
-        var getuserid = intent.getIntExtra("userId", 0)
-        surveyid = getsurveid
-        userId = getuserid
+        surveyId = intent.getIntExtra("surveyid", 0)
+        userId = intent.getIntExtra("userId", 0)
 
-        val survey = dbHelper.getSurveyById(surveyid)
-        val answers = dbHelper.getAllAnswers()
-        val questions = dbHelper.getAllQuestionsBySurveyId(surveyid)
+        val survey = dbHelper.getSurveyById(surveyId)
+        val questions = dbHelper.getAllQuestionsBySurveyId(surveyId)
 
-        for (question in questions) {
-            questionIdList.add(question.questionId)
-        }
+        questionIdList.addAll(questions.map { it.questionId })
 
-        for (id in questionIdList) {
-            answersList.addAll(dbHelper.getAllAnswersByQuestionid(id))
-        }
-
-        var totalAnswers = answersList.size
+        answersList =
+            questionIdList.flatMap { dbHelper.getAllAnswersByQuestionid(it) } as ArrayList<Answers>
+        val totalAnswers = answersList.size
 
         var j = 1
 
@@ -52,34 +47,26 @@ class SurveyResultsActivity : AppCompatActivity() {
                 var strongAgree = 0
                 var agree = 0
                 var neither = 0
-                var disagre = 0
+                var disagree = 0
                 var strongDisagree = 0
-                for (x in 0 until answersList.size) {
-                    if (questionId == answersList[x].questionId) {
-                        when (answersList[x].answerText) {
-                            "1.Strongly Agree" -> {
-                                strongAgree++
-                            }
-                            "2.Agree" -> {
-                                agree++
-                            }
-                            "3.Neither Agree nor Disagree" -> {
-                                neither++
-                            }
-                            "4.Disagree" -> {
-                                disagre++
-                            }
-                            "5.Strongly Disagree" -> {
-                                strongDisagree++
-                            }
+
+                for (answer in answersList) {
+                    if (questionId == answer.questionId) {
+                        when (answer.answerText) {
+                            "1.Strongly Agree" -> strongAgree++
+                            "2.Agree" -> agree++
+                            "3.Neither Agree Nor Disagree" -> neither++
+                            "4.Disagree" -> disagree++
+                            "5.Strongly Disagree" -> strongDisagree++
                         }
                     }
                 }
-                var a = strongAgree.toDouble() / (totalAnswers / 10) * 100
-                var b = agree.toDouble() / (totalAnswers / 10) * 100
-                var c = neither.toDouble() / (totalAnswers / 10) * 100
-                var d = disagre.toDouble() / (totalAnswers / 10) * 100
-                var x = strongDisagree.toDouble() / (totalAnswers / 10) * 100
+
+                val a = strongAgree.toDouble() / (totalAnswers / 10) * 100
+                val b = agree.toDouble() / (totalAnswers / 10) * 100
+                val c = neither.toDouble() / (totalAnswers / 10) * 100
+                val d = disagree.toDouble() / (totalAnswers / 10) * 100
+                val e = strongDisagree.toDouble() / (totalAnswers / 10) * 100
                 resultList.add(
                     Choices(
                         j++,
@@ -88,58 +75,47 @@ class SurveyResultsActivity : AppCompatActivity() {
                         b.roundToInt(),
                         c.roundToInt(),
                         d.roundToInt(),
-                        x.roundToInt()
+                        e.roundToInt()
                     )
                 )
             }
         } catch (e: IllegalArgumentException) {
-            var f = 1
-            for (questionId in questionIdList) {
-                resultList.add(Choices(f++, 0, 0, 0, 0, 0, 0))
+            for (f in 1..questionIdList.size) {
+                resultList.add(Choices(f, 0, 0, 0, 0, 0, 0))
             }
         }
 
         findViewById<TextView>(R.id.text_editTitle).text = survey.surveyTitle
-        findViewById<TextView>(R.id.text_editStartDate).text = survey.surveyStartDate
-        findViewById<TextView>(R.id.text_editEndDate).text = survey.surveyEndDate
-        findViewById<TextView>(R.id.totalanswers).text =
-            "Total responses " + (totalAnswers / 10).toString()
 
         simpleList = findViewById<ListView>(R.id.resultListView)
-
         val appAdaptor = Results(applicationContext, resultList)
-
-        simpleList!!.adapter = appAdaptor
-
+        simpleList.adapter = appAdaptor
     }
 
     fun edit(view: View) {
         val intent = Intent(this, EditSurveyMainActivity::class.java)
-        intent.putExtra("surveyId", surveyid)
+        intent.putExtra("surveyId", surveyId)
         intent.putExtra("userId", userId)
         startActivity(intent)
     }
 
-
     fun delete(view: View) {
-
-        if (dbHelper.deleteSurvey(surveyid)) {
+        if (dbHelper.deleteSurvey(surveyId)) {
             val intent = Intent(this, AdminInterfaceActivity::class.java)
 
             try {
-                for (i in 0 until 10) {
-                    dbHelper.deleteQuestion(questions[i].questionId)
+                for (question in questions.take(10)) {
+                    dbHelper.deleteQuestion(question.questionId)
                 }
 
-                for (i in 0 until answersList.size) {
-                    dbHelper.deleteAnswer(answersList[i])
+                for (answer in answersList) {
+                    dbHelper.deleteAnswer(answer)
                 }
             } catch (e: java.lang.IndexOutOfBoundsException) {
             }
 
-
             intent.putExtra("userId", userId)
-            Toast.makeText(this, "Survey deleted", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Survey Deleted!", Toast.LENGTH_SHORT).show()
             startActivity(intent)
         } else {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()

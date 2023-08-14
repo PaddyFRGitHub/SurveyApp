@@ -23,7 +23,6 @@ class AdminPortalActivity : AppCompatActivity() {
         val intent = Intent(this, AdminInterfaceActivity::class.java)
         val userName = findViewById<EditText>(R.id.text_adminuser).text.toString()
         val passWord = findViewById<EditText>(R.id.text_adminPassword).text.toString()
-        val code = findViewById<EditText>(R.id.adminCode2).text.toString()
         val actualUser = dbHelper.getUser(userName)
 
         if (userName.isBlank() && passWord.isBlank()) {
@@ -44,7 +43,6 @@ class AdminPortalActivity : AppCompatActivity() {
         }
         if (passWord == actualUser.passWord) {
             if (actualUser.isAdmin == 1) {
-                if (code == "99") {
                     intent.putExtra("userId", actualUser.userId)
                     startActivity(intent)
                 } else {
@@ -55,4 +53,4 @@ class AdminPortalActivity : AppCompatActivity() {
             }
         }
     }
-}
+

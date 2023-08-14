@@ -7,39 +7,34 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import java.sql.SQLException
 
-private val DataBaseName = "AppDatabase.db"
+private val DataBaseName = "Surveydb.db"
 private val ver: Int = 1
 
 class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName, null, ver) {
 
-    /*User Table*/
     val users = "Users"
     val userId = "userId"
     val userName = "userName"
     val passWord = "passWord"
     val isAdmin = "isAdmin"
 
-    /*Surveys Table*/
     val surveys = "Surveys"
     val surveyId = "surveyId"
     val surveyTitle = "surveyTitle"
     val surveyStartDate = "surveyStartDate"
     val surveyEndDate = "surveyEndDate"
 
-    /*Questions Table*/
     val questions = "Questions"
     val questionId = "questionId"
     val questionText = "questionText"
     val questionSurveyId = "surveyId"
-
-    /*Answers Table*/
+    
     val answers = "Answers"
     val answerId = "answerId"
     val answerQuestionId = "questionId"
     val answerUserId = "userId"
     val answerText = "answerText"
-
-    /*Completion Table*/
+    
     val completion = "Completion"
     val completionId = "completionId"
     val completionUserId = "userId"
@@ -48,42 +43,50 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     override fun onCreate(db: SQLiteDatabase?) {
         try {
-            var sqlCreateStatement: String = "CREATE TABLE IF NOT EXISTS " + users + " ( " +
-                    userId + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-                    userName + " TEXT NOT NULL, " +
-                    passWord + " TEXT NOT NULL, " +
-                    isAdmin + " INTEGER DEFAULT 0 )"
+            db?.apply {
+                execSQL(
+                    "CREATE TABLE IF NOT EXISTS $users (" +
+                            "$userId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                            "$userName TEXT NOT NULL, " +
+                            "$passWord TEXT NOT NULL, " +
+                            "$isAdmin INTEGER DEFAULT 0)"
+                )
 
-            db?.execSQL(sqlCreateStatement)
+                execSQL(
+                    "CREATE TABLE IF NOT EXISTS $surveys (" +
+                            "$surveyId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                            "$surveyTitle TEXT NOT NULL, " +
+                            "$surveyStartDate TEXT NOT NULL, " +
+                            "$surveyEndDate TEXT)"
+                )
 
-            sqlCreateStatement = "CREATE TABLE IF NOT EXISTS " +
-                    surveys + " ( " +
-                    surveyId + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-                    surveyTitle + " TEXT NOT NULL, " +
-                    surveyStartDate + " TEXT NOT NULL, " +
-                    surveyEndDate + " TEXT )"
+                execSQL(
+                    "CREATE TABLE IF NOT EXISTS $questions (" +
+                            "$questionId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                            "$questionText TEXT, " +
+                            "$questionSurveyId INTEGER, " +
+                            "FOREIGN KEY ($questionSurveyId) REFERENCES $surveys($surveys))"
+                )
 
-            db?.execSQL(sqlCreateStatement)
+                execSQL(
+                    "CREATE TABLE IF NOT EXISTS $answers (" +
+                            "$answerId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                            "$answerQuestionId INTEGER NOT NULL, " +
+                            "$answerUserId INTEGER NOT NULL, " +
+                            "$answerText TEXT, " +
+                            "FOREIGN KEY ($answerUserId) REFERENCES $users($userId), " +
+                            "FOREIGN KEY ($answerQuestionId) REFERENCES $questions($questionId))"
+                )
 
-
-            sqlCreateStatement = "CREATE TABLE IF NOT EXISTS " +
-                    questions + " ( " +
-                    questionId + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-                    questionText + " TEXT, " +
-                    questionSurveyId + " INTEGER, " + " FOREIGN KEY ($questionSurveyId) REFERENCES $surveys($surveys))"
-
-            db?.execSQL(sqlCreateStatement)
-
-            sqlCreateStatement = "CREATE TABLE IF NOT EXISTS " +
-                    answers + " ( " +
-                    answerId + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
-                    answerQuestionId + " INTEGER NOT NULL, " +
-                    answerUserId + " INTEGER NOT NULL, " +
-                    answerText + " TEXT, " + " FOREIGN KEY ($answerUserId) REFERENCES $answers ($answerId)," + " FOREIGN KEY ($answerQuestionId ) REFERENCES $questions($questionId))"
-
-            db?.execSQL(sqlCreateStatement)
-
-
+                execSQL(
+                    "CREATE TABLE IF NOT EXISTS $completion (" +
+                            "$completionId INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                            "$completionUserId INTEGER NOT NULL, " +
+                            "$completionSurveyId INTEGER NOT NULL, " +
+                            "FOREIGN KEY ($completionUserId) REFERENCES $users($userId), " +
+                            "FOREIGN KEY ($completionSurveyId) REFERENCES $surveys($surveyId))"
+                )
+            }
         } catch (e: SQLException) {
         }
     }
@@ -95,10 +98,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
 
     fun getUserByID(uId: Int): User {
-        val db: SQLiteDatabase = this.readableDatabase
+        val db = this.readableDatabase
         val sqlStatement = "SELECT * FROM $users WHERE $userId = $uId"
 
-        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        val cursor = db.rawQuery(sqlStatement, null)
 
         if (cursor.moveToFirst()) {
             db.close()
@@ -114,10 +117,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
     }
 
     fun getUser(uName: String): User {
-        val db: SQLiteDatabase = this.readableDatabase
+        val db = this.readableDatabase
         val sqlStatement = "SELECT * FROM $users WHERE $userName = '$uName'"
 
-        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        val cursor = db.rawQuery(sqlStatement, null)
 
         if (cursor.moveToFirst()) {
             return User(
@@ -134,8 +137,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun addUser(user: User): Boolean {
 
-        val db: SQLiteDatabase = this.writableDatabase
-        val cv: ContentValues = ContentValues()
+        val db = this.writableDatabase
+        val cv = ContentValues()
 
         cv.put(userName, user.userName)
         cv.put(passWord, user.passWord)
@@ -150,10 +153,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun getAllSurveys(): ArrayList<Survey> {
         val surveyList = ArrayList<Survey>()
-        val db: SQLiteDatabase = this.readableDatabase
+        val db = this.readableDatabase
         val sqlStatement = "SELECT * FROM $surveys"
 
-        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        val cursor = db.rawQuery(sqlStatement, null)
 
         if (cursor.moveToFirst()) {
             do {
@@ -172,11 +175,11 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
     }
 
     fun getSurvey(uName: String): Survey {
-        val db: SQLiteDatabase = this.readableDatabase
-        val sanitizedTitle = uName.replace("'", "''") // Escape single quotes
+        val db = this.readableDatabase
+        val sanitizedTitle = uName.replace("'", "''")
         val sqlStatement = "SELECT * FROM $surveys WHERE $surveyTitle = '$sanitizedTitle'"
 
-        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        val cursor = db.rawQuery(sqlStatement, null)
 
         if (cursor.moveToFirst()) {
             db.close()
@@ -193,10 +196,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
     }
 
     fun getSurveyById(uId: Int): Survey {
-        val db: SQLiteDatabase = this.readableDatabase
+        val db = this.readableDatabase
         val sqlStatement = "SELECT * FROM $surveys WHERE $surveyId = $uId"
 
-        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        val cursor = db.rawQuery(sqlStatement, null)
 
         if (cursor.moveToFirst()) {
             db.close()
@@ -214,8 +217,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun addSurvey(survey: Survey): Boolean {
 
-        val db: SQLiteDatabase = this.writableDatabase
-        val cv: ContentValues = ContentValues()
+        val db = this.writableDatabase
+        val cv = ContentValues()
 
         cv.put(surveyTitle, survey.surveyTitle)
         cv.put(surveyStartDate, survey.surveyStartDate)
@@ -229,7 +232,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun deleteSurvey(survey: Int): Boolean {
 
-        val db: SQLiteDatabase = this.writableDatabase
+        val db = this.writableDatabase
         val result = db.delete(surveys, "$surveyId = $survey", null) == 1
 
         db.close()
@@ -238,8 +241,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun updateSurvey(survey: Survey): Boolean {
 
-        val db: SQLiteDatabase = this.writableDatabase
-        val cv: ContentValues = ContentValues()
+        val db = this.writableDatabase
+        val cv = ContentValues()
 
         cv.put(surveyTitle, survey.surveyTitle)
         cv.put(surveyStartDate, survey.surveyStartDate)
@@ -254,10 +257,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun getAllQuestionsBySurveyId(id: Int): ArrayList<Questions> {
         val questionsList = ArrayList<Questions>()
-        val db: SQLiteDatabase = this.readableDatabase
+        val db = this.readableDatabase
         val sqlStatement = "SELECT * FROM $questions WHERE $questionSurveyId = $id"
 
-        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        val cursor = db.rawQuery(sqlStatement, null)
 
         if (cursor.moveToFirst()) {
             do {
@@ -299,8 +302,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun addQuestion(questions: Questions): Boolean {
 
-        val db: SQLiteDatabase = this.writableDatabase
-        val cv: ContentValues = ContentValues()
+        val db = this.writableDatabase
+        val cv = ContentValues()
 
         cv.put(questionText, questions.questionText)
         cv.put(questionSurveyId, questions.surveyId)
@@ -313,7 +316,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun deleteQuestion(question: Int): Boolean {
 
-        val db: SQLiteDatabase = this.writableDatabase
+        val db = this.writableDatabase
         val result = db.delete(questions, "$questionId = $question", null) == 1
 
         db.close()
@@ -322,8 +325,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun updateQuestion(questions: Questions): Boolean {
 
-        val db: SQLiteDatabase = this.writableDatabase
-        val cv: ContentValues = ContentValues()
+        val db = this.writableDatabase
+        val cv = ContentValues()
 
         cv.put(questionText, questions.questionText)
         cv.put(questionSurveyId, questions.surveyId)
@@ -337,10 +340,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun getAllAnswers(): ArrayList<Answers> {
         val answersList = ArrayList<Answers>()
-        val db: SQLiteDatabase = this.readableDatabase
+        val db = this.readableDatabase
         val sqlStatement = "SELECT * FROM $answers"
 
-        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        val cursor = db.rawQuery(sqlStatement, null)
 
         if (cursor.moveToFirst()) {
             do {
@@ -360,10 +363,10 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun getAllAnswersByQuestionid(uId: Int): ArrayList<Answers> {
         val answersList = ArrayList<Answers>()
-        val db: SQLiteDatabase = this.readableDatabase
+        val db = this.readableDatabase
         val sqlStatement = "SELECT * FROM $answers WHERE $answerQuestionId = $uId"
 
-        val cursor: Cursor = db.rawQuery(sqlStatement, null)
+        val cursor = db.rawQuery(sqlStatement, null)
 
         if (cursor.moveToFirst()) {
             do {
@@ -384,7 +387,7 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun deleteAnswer(answers: Answers): Boolean {
 
-        val db: SQLiteDatabase = this.writableDatabase
+        val db = this.writableDatabase
         val result = db.delete(this.answers, "$answerId = ${answers.answerId}", null) == 1
 
         db.close()
@@ -393,8 +396,8 @@ class DataBaseHelper(context: Context) : SQLiteOpenHelper(context, DataBaseName,
 
     fun addAnswer(answers: Answers): Boolean {
 
-        val db: SQLiteDatabase = this.writableDatabase
-        val cv: ContentValues = ContentValues()
+        val db = this.writableDatabase
+        val cv = ContentValues()
 
         cv.put(answerText, answers.answerText)
         cv.put(answerUserId, answers.userId)

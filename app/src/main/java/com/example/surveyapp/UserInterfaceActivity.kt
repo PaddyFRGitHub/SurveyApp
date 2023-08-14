@@ -10,10 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.surveyapp.Model.DataBaseHelper
 
 class UserInterfaceActivity : AppCompatActivity() {
-    lateinit var simpleList: ListView
 
-
-    val dbHelper: DataBaseHelper = DataBaseHelper(this)
+    private lateinit var simpleList: ListView
+    private val dbHelper: DataBaseHelper = DataBaseHelper(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,46 +22,29 @@ class UserInterfaceActivity : AppCompatActivity() {
         val userId = intent.getIntExtra("userId", 0)
 
         val displayUser = dbHelper.getUserByID(userId)
-        findViewById<TextView>(R.id.textView9).text = displayUser.userName
+        val usernameTextView = findViewById<TextView>(R.id.textView9)
+        usernameTextView.text = displayUser.userName.uppercase()
 
         val surveyList = dbHelper.getAllSurveys()
         simpleList = findViewById<ListView>(R.id.listviewItem2)
 
-        val surveyListsAdaptor = SurveyLists(applicationContext, surveyList)
-
-        simpleList!!.adapter = surveyListsAdaptor
+        val surveyListsAdapter = SurveyLists(applicationContext, surveyList)
+        simpleList.adapter = surveyListsAdapter
 
         simpleList.isClickable = true
-        simpleList.setOnItemClickListener { parent, view, positon, id ->
-            val surveyTitle = surveyList[positon]
-
-
-            val intent = Intent(this, UserAnswerActivity::class.java)
-            intent.putExtra("surveyId", surveyTitle.surveyId)
-            intent.putExtra("userId", userId)
-
-
-            startActivity(intent)
-        }
-
-
-        simpleList.setOnItemClickListener { parent, view, positon, id ->
-            val surveyTitle = surveyList[positon]
+        simpleList.setOnItemClickListener { parent, view, position, id ->
+            val surveyTitle = surveyList[position]
             val surveyId = surveyTitle.surveyId
 
-            val intent = if (dbHelper.isSurveyCompletedByUser(userId, surveyId)) {
-
+            if (dbHelper.isSurveyCompletedByUser(userId, surveyId)) {
                 Toast.makeText(this, "You have already completed this survey.", Toast.LENGTH_SHORT).show()
-                null
             } else {
-
-                Intent(this, UserAnswerActivity::class.java).apply {
+                val intent = Intent(this, UserAnswerActivity::class.java).apply {
                     putExtra("surveyId", surveyId)
                     putExtra("userId", userId)
                 }
+                startActivity(intent)
             }
-
-            intent?.let { startActivity(it) }
         }
     }
 
@@ -70,5 +52,4 @@ class UserInterfaceActivity : AppCompatActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
-
 }

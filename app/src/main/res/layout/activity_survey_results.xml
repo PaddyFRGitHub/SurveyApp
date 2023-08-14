@@ -14,86 +14,42 @@
             android:alpha="0.3"
             android:scaleType="centerCrop"/>
 
-    <TextView
-            android:id="@+id/textView21"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="End Date:"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700"
+    <Button
+            android:id="@+id/btn_editBack"
+            android:layout_width="268dp"
+            android:layout_height="44dp"
+            android:backgroundTint="@color/purple_700"
+            android:onClick="goBack"
+            android:text="Back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.71"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.176" />
-
-    <TextView
-            android:id="@+id/text_editStartDate"
-            android:layout_width="89dp"
-            android:layout_height="21dp"
-            android:ems="10"
-            android:hint="Start Date"
-            android:inputType="date"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.09"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.176"
-            app:layout_constraintStart_toEndOf="@+id/textView20" />
+            app:layout_constraintTop_toBottomOf="@+id/scrollView3"
+            app:layout_constraintVertical_bias="0.128"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
-        android:id="@+id/btn_editBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_700"
-        android:onClick="goBack"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.105"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919" />
-
-    <Button
-        android:id="@+id/btn_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_700"
-        android:onClick="edit"
-        android:text="Edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.888"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919" />
-
-    <TextView
-            android:id="@+id/text_editEndDate"
-            android:layout_width="83dp"
-            android:layout_height="26dp"
-            android:ems="10"
-            android:hint="End Date"
-            android:inputType="date"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700"
+            android:id="@+id/btn_edit"
+            android:layout_width="272dp"
+            android:layout_height="51dp"
+            android:backgroundTint="@color/purple_700"
+            android:onClick="edit"
+            android:text="Edit"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.951"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.175"
-            app:layout_constraintStart_toEndOf="@+id/textView21" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_deletesurvey"
+            app:layout_constraintHorizontal_bias="0.503"
+            app:layout_constraintVertical_bias="0.0"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <TextView
             android:id="@+id/text_editTitle"
             android:layout_width="395dp"
             android:layout_height="47dp"
             android:ems="10"
-            android:hint="Title"
+            android:hint="Title\n"
             android:inputType="textPersonName"
             android:textColor="@color/purple_700"
             android:textColorHint="@color/purple_700"
@@ -102,35 +58,24 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.082"
-            app:layout_constraintHorizontal_bias="0.065" />
+            app:layout_constraintVertical_bias="0.042"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
-        android:id="@+id/btn_deletesurvey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/purple_700"
-        android:onClick="delete"
-        android:text="Delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919" />
-
-    <TextView
-        android:id="@+id/totalanswers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="140dp"
-        android:text="TextView"
-        android:textColor="@color/purple_700"
-        android:textColorHint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.917"
-        app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/btn_deletesurvey"
+            android:layout_width="265dp"
+            android:layout_height="46dp"
+            android:backgroundTint="@color/purple_700"
+            android:onClick="delete"
+            android:text="Delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_editBack"
+            app:layout_constraintVertical_bias="0.0"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <TextView
             android:id="@+id/textView12"
@@ -206,40 +151,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.26" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="388dp"
-        android:layout_height="320dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/btn_editBack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        app:layout_constraintVertical_bias="0.102">
+    <ScrollView
+            android:layout_width="396dp"
+            android:layout_height="227dp"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="@+id/text_editTitle"
+            android:layout_marginTop="112dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/scrollView3"
+            app:layout_constraintHorizontal_bias="1.0">
 
-        <ListView
-            android:id="@+id/resultListView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
+        <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="388dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start date:"
-        android:textColor="@color/purple_700"
-        android:textColorHint="@color/purple_700"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.174" />
+            <ListView
+                    android:id="@+id/resultListView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="true" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,8 +14,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class EditSurveyMainActivity : AppCompatActivity() {
-    val dbHelper: DataBaseHelper = DataBaseHelper(this)
 
+    val dbHelper: DataBaseHelper = DataBaseHelper(this)
     var transferId = 0
     lateinit var startDate2: TextView
     lateinit var endDate2: TextView
@@ -53,7 +53,7 @@ class EditSurveyMainActivity : AppCompatActivity() {
                 if (newEndDate < newStartDate) {
                     Toast.makeText(
                         this,
-                        "End date can't be eariler then start date",
+                        "End date cannot be sooner than the start date",
                         Toast.LENGTH_SHORT
                     ).show()
                     endDate2.text = ""
@@ -111,12 +111,12 @@ class EditSurveyMainActivity : AppCompatActivity() {
             Toast.makeText(this, "Please enter a starting date", Toast.LENGTH_SHORT).show()
             return
         }
+
         intent.putExtra("surveyId", transferId)
         intent.putExtra("userId", userNo3)
         intent.putExtra("title", title)
         intent.putExtra("startDate", startDate)
         intent.putExtra("endDate", endDate)
-
         startActivity(intent)
 
     }

@@ -21,26 +21,29 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
-            android:text="Question"
+            android:text="Question\n"
             android:textColor="@color/purple_700"
             android:textColorHint="@color/purple_700"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHorizontal_bias="0.461" />
+            app:layout_constraintHorizontal_bias="0.461"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
-        android:id="@+id/btn_NextQuestion"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="56dp"
-        android:onClick="nextQuestion"
-        android:text="Next"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.906"
-        app:layout_constraintStart_toStartOf="parent" />
+            android:id="@+id/btn_NextQuestion"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="56dp"
+            android:onClick="nextQuestion"
+            android:text="Next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.906"
+            app:layout_constraintStart_toStartOf="parent"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
             android:id="@+id/btn_Previous"
@@ -48,13 +51,14 @@
             android:layout_height="50dp"
             android:layout_marginBottom="56dp"
             android:onClick="previousQuestion"
-            android:backgroundTint="#627BB5"
+            android:backgroundTint="#FFCB7D"
 
             android:text="Previous"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
             android:id="@+id/btn_Cancel"
@@ -67,7 +71,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.053"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:backgroundTint="#FF7474"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
             android:id="@+id/btn_finishAnswer"
@@ -80,7 +86,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.945"
             app:layout_constraintStart_toStartOf="parent"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
@@ -94,44 +101,49 @@
         app:layout_constraintTop_toBottomOf="@+id/text_Question">
 
         <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:text="1.Strongly Agree"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700" />
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="1.Strongly Agree"
+                android:textColor="@color/purple_700"
+                android:textColorHint="@color/purple_700"
+                android:fontFamily="sans-serif-condensed-medium" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:text="2.Agree"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700" />
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="2.Agree"
+                android:textColor="@color/purple_700"
+                android:textColorHint="@color/purple_700"
+                android:fontFamily="sans-serif-condensed-medium" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:text="3.Neither Agree nor Disagree"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700" />
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="3.Neither Agree nor Disagree"
+                android:textColor="@color/purple_700"
+                android:textColorHint="@color/purple_700"
+                android:fontFamily="sans-serif-condensed-medium" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:text="4.Disagree"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700" />
+                android:id="@+id/radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="4.Disagree"
+                android:textColor="@color/purple_700"
+                android:textColorHint="@color/purple_700"
+                android:fontFamily="sans-serif-condensed-medium" />
 
         <RadioButton
-            android:id="@+id/radioButton5"
-            android:layout_width="match_parent"
-            android:layout_height="65dp"
-            android:text="5.Strongly Disagree"
-            android:textColor="@color/purple_700"
-            android:textColorHint="@color/purple_700" />
+                android:id="@+id/radioButton5"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:text="5.Strongly Disagree"
+                android:textColor="@color/purple_700"
+                android:textColorHint="@color/purple_700"
+                android:fontFamily="sans-serif-condensed-medium" />
     </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,7 +27,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <EditText
             android:id="@+id/text_PNumberRegister"
@@ -39,27 +40,32 @@
             android:textColor="@color/purple_700"
             android:textColorHint="@color/purple_700"
             android:ems="10"
-            android:hint="Enter P Number"
+            android:hint="P Number"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/adminCode" />
+            app:layout_constraintTop_toBottomOf="@+id/adminCode"
+            android:outlineProvider="none"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <EditText
-        android:id="@+id/text_Password1"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:textColor="@color/purple_700"
-        android:textColorHint="@color/purple_700"
-        android:ems="10"
-        android:hint="Enter Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_PNumberRegister" />
+            android:id="@+id/text_Password1"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:textColor="@color/purple_700"
+            android:textColorHint="@color/purple_700"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_PNumberRegister"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <EditText
             android:id="@+id/adminCode"
@@ -75,7 +81,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintHorizontal_bias="0.456"
-            app:layout_constraintTop_toBottomOf="@+id/btn_ChangeUser" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_ChangeUser"
+            android:textAlignment="center"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
             android:id="@+id/btn_RegisterAccount"
@@ -90,23 +98,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_Password1"
             android:layout_marginTop="64dp"
-            app:layout_constraintHorizontal_bias="0.611" />
+            app:layout_constraintHorizontal_bias="0.611"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
-            android:id="@+id/btn_BackToLogin"
+            android:id="@+id/btn_Home"
             android:layout_width="331dp"
             android:layout_height="53dp"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:backgroundTint="@color/purple_700"
-            android:onClick="goBackToLogin"
+            android:onClick="homeButton"
             android:text="Home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_RegisterAccount"
             app:layout_constraintHorizontal_bias="0.562"
-            app:layout_constraintVertical_bias="0.501" />
+            app:layout_constraintVertical_bias="0.501"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <CheckBox
             android:id="@+id/btn_ChangeUser"

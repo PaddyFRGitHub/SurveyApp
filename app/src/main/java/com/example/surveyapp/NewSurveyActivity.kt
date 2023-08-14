@@ -25,6 +25,7 @@ class NewSurveyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_survey)
         supportActionBar?.title = ""
+
         var userId = intent.getIntExtra("USERID", 0)
         userNo2 = userId
 
@@ -38,8 +39,6 @@ class NewSurveyActivity : AppCompatActivity() {
         startDate.text = sdf.format(currentDate.time)
         endDate.text = sdf.format(currentDate.time)
 
-
-
         val newStartDate = Calendar.getInstance()
         val newEndDate = Calendar.getInstance()
 
@@ -52,7 +51,7 @@ class NewSurveyActivity : AppCompatActivity() {
                 if (newEndDate < newStartDate) {
                     Toast.makeText(
                         this,
-                        "End date can't be earlier then start date",
+                        "End date cannot be sooner than the start date",
                         Toast.LENGTH_SHORT
                     ).show()
                     endDate.text = ""
@@ -91,45 +90,39 @@ class NewSurveyActivity : AppCompatActivity() {
             dialog.datePicker.minDate = newStartDate.timeInMillis - 1000
             dialog.show()
         }
-
     }
 
 
     fun next(view: View) {
-
         val title = findViewById<EditText>(R.id.text_title).text.toString()
         val startDate = startDate.text.toString()
         val endDate = endDate.text.toString()
         val checkTitle = dbHelper.getSurvey(title)
 
-        if (title == "") {
-            Toast.makeText(this, "Please enter a title", Toast.LENGTH_SHORT).show()
-            return
-        }
-        if (startDate == "") {
-            Toast.makeText(this, "Please add an start date", Toast.LENGTH_SHORT).show()
-            return
-        }
-        if (endDate == "") {
-            Toast.makeText(this, "Please add an end date", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        if (checkTitle.surveyTitle == title) {
-            Toast.makeText(
-                this,
-                "Survey already exists with this title please change it",
-                Toast.LENGTH_SHORT
-            ).show()
-            return
-        } else {
-            val intent = Intent(this, QuestionActivity::class.java)
-
-            intent.putExtra("title", title)
-            intent.putExtra("startDate", startDate)
-            intent.putExtra("endDate", endDate)
-            intent.putExtra("userId", userNo2)
-            startActivity(intent)
+        when {
+            title.isBlank() -> {
+                Toast.makeText(this, "Please enter a title", Toast.LENGTH_SHORT).show()
+                return
+            }
+            startDate.isBlank() -> {
+                Toast.makeText(this, "Please add a start date", Toast.LENGTH_SHORT).show()
+                return
+            }
+            endDate.isBlank() -> {
+                Toast.makeText(this, "Please add an end date", Toast.LENGTH_SHORT).show()
+                return
+            }
+            checkTitle.surveyTitle == title -> {
+                Toast.makeText(this, "Survey already exists with this title, please change it", Toast.LENGTH_SHORT).show()
+            }
+            else -> {
+                val intent = Intent(this, QuestionActivity::class.java)
+                intent.putExtra("title", title)
+                intent.putExtra("startDate", startDate)
+                intent.putExtra("endDate", endDate)
+                intent.putExtra("userId", userNo2)
+                startActivity(intent)
+            }
         }
     }
 

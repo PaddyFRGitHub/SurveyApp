@@ -51,20 +51,22 @@
             android:topLeftRadius="10dp"
             android:topRightRadius="10dp"
             app:icon="@drawable/common_full_open_on_phone"
-            android:layout_marginEnd="16dp" />
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <!-- Title TextView -->
     <TextView
             android:id="@+id/textView24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:text="Module"
             android:textColor="@color/purple_700"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/linearlayout2"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <!-- Start Date TextView -->
     <TextView
@@ -77,7 +79,8 @@
             app:layout_constraintStart_toEndOf="@+id/textView24"
             app:layout_constraintBottom_toTopOf="@+id/linearlayout2"
             android:layout_marginStart="121dp"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <TextView
             android:id="@+id/textView26"
@@ -89,7 +92,8 @@
             app:layout_constraintStart_toEndOf="@+id/textView25"
             app:layout_constraintBottom_toTopOf="@+id/linearlayout2"
             android:layout_marginBottom="4dp"
-            android:layout_marginStart="36dp" />
+            android:layout_marginStart="36dp"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <LinearLayout
             android:id="@+id/linearlayout2"

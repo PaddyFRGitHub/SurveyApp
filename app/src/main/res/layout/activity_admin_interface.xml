@@ -26,7 +26,8 @@
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/LinearLayoutV"
             app:layout_constraintEnd_toStartOf="@+id/textView8"
-            app:layout_constraintStart_toEndOf="@+id/textView6" />
+            app:layout_constraintStart_toEndOf="@+id/textView6"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <TextView
             android:id="@+id/textView8"
@@ -38,7 +39,8 @@
             android:textColor="@color/purple_700"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/LinearLayoutV"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
             android:id="@+id/btn_newSurvey"
@@ -50,7 +52,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="84dp" />
+            android:layout_marginTop="84dp"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <Button
             android:id="@+id/btn_logout"
@@ -67,12 +70,13 @@
             android:topLeftRadius="10dp"
             android:topRightRadius="10dp"
             app:icon="@drawable/common_full_open_on_phone"
-            android:layout_marginEnd="16dp" />
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <LinearLayout
             android:id="@+id/LinearLayoutV"
-            android:layout_width="379dp"
-            android:layout_height="353dp"
+            android:layout_width="362dp"
+            android:layout_height="343dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:orientation="vertical"
@@ -83,8 +87,8 @@
 
         <ListView
                 android:id="@+id/listviewItem"
-                android:layout_width="match_parent"
-                android:layout_height="270dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="262dp" />
     </LinearLayout>
 
     <TextView
@@ -93,11 +97,12 @@
             android:layout_height="20dp"
             android:layout_marginStart="20dp"
             android:layout_marginBottom="8dp"
-            android:text="Title"
+            android:text="Module"
             android:textColor="@color/purple_700"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/LinearLayoutV"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:fontFamily="sans-serif-condensed-medium" />
 
     <TextView
             android:id="@+id/welcome"
